@@ -7,43 +7,57 @@
                     border
                     style="width: 100%">
                 <el-table-column
-                        type="index"
+                        fixed
+                        prop="name"
+                        label="姓名"
+                        width="80">
+                </el-table-column>
+                <el-table-column
+                        prop="sex"
+                        label="性别"
+                        width="50">
+                </el-table-column>
+                <el-table-column
+                        prop="workPosition"
+                        label="职位"
+                        width="80">
+                </el-table-column>
+                <el-table-column
+                        prop="workUnit"
+                        label="工作单位"
+                        width="120">
+                </el-table-column>
+                <el-table-column
+                        prop="subject"
+                        label="专题名称"
                         width="100">
                 </el-table-column>
                 <el-table-column
-                        property="account"
-                        label="账号名"
-                        width="220">
+                        prop="researchSite"
+                        label="科考地点"
+                        width="120">
                 </el-table-column>
                 <el-table-column
-                        property="name"
-                        label="用户姓名"
-                        width="220">
+                        prop="comeDate"
+                        label="来青时间"
+                        width="130">
                 </el-table-column>
                 <el-table-column
-                        property="sex"
-                        label="性别"
-                        :formatter="sexFromat">
+                        prop="backDate"
+                        label="离青时间"
+                        width="130">
                 </el-table-column>
                 <el-table-column
-                        property="major"
-                        label="专业">
-                </el-table-column>
-                <el-table-column
-                        property="idCard"
-                        label="身份证号">
-                </el-table-column>
-                <el-table-column
-                        property="type"
-                        label="身份"
-                        :formatter="typeFormat">
+                        prop="demand"
+                        label="服务保障需求"
+                        width="300">
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
                         <el-button
                                 size="mini"
-                                @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                                @click="handleEdit(scope.$index, scope.row)">查看账号信息</el-button>
                         <el-button
                                 size="mini"
                                 type="danger"
@@ -53,22 +67,22 @@
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="20"
-                        layout="total, prev, pager, next"
-                        :total="count">
+                        :page-size="10"
+                        :pager-count="6"
+                        layout="prev, pager, next"
+                        @current-change="current_change"
+                        :current-page.sync="currentPage"
+                        :total="totalNum">
                 </el-pagination>
             </div>
         </div>
         <el-dialog title="人员信息" :visible.sync="dialogFormVisible" width="30%">
             <el-form :model="form" :disabled="true" >
-                <el-form-item label="账号名" :label-width="formLabelWidth">
-                    <el-input v-model="form.account" autocomplete="off"></el-input>
-                </el-form-item>
                 <el-form-item label="用户姓名" :label-width="formLabelWidth">
                     <el-input v-model="form.username" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="账号名" :label-width="formLabelWidth">
+                    <el-input v-model="form.account" autocomplete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="性别" :label-width="formLabelWidth">
                     <el-input v-model="form.sex" autocomplete="off"></el-input>
@@ -97,27 +111,16 @@
         name: "UserList",
         data(){
             return {
-                tableData: [{
-                    account: '',
+                tableData: [],
+                currentPage:1,
+                totalNum:0,
+                condition: {
                     name: '',
-                    sex: '',
-                    major: '',
-                    idCard: '',
-                    type: '',
-                    examine: '',
-                    psd: '',
-                    state: '',
-                    uId: ''
-                }],
-                form: {
-                    username: '',
-                    city: ''
+                    workUnit:'',
+                    subjectName:'',
+                    pageOffset:1,
+                    pageSize:10
                 },
-                currentRow: null,
-                offset: 0,
-                limit: 20,
-                count: 0,
-                currentPage: 1,
                 dialogFormVisible: false,
                 formLabelWidth: '120px'
             }

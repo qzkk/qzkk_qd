@@ -5,17 +5,17 @@
                 <div class="manage_tip">
                     <p>青藏科考管理系统PC端</p>
                 </div>
-                <el-form :model="registerForm" :rules="rules" ref="regForm"  label-width="80px" >
-                    <el-form-item label="姓名" prop="name">
-                        <el-input v-model="registerForm.name" placeholder="姓名">
+                <el-form :model="registerForm" :rules="rules" ref="regForm"  label-width="100px" >
+                    <el-form-item label="账号名" prop="account">
+                        <el-input v-model="registerForm.account" placeholder="账号名">
                         </el-input>
                     </el-form-item>
                     <el-form-item label="密码" prop="psd">
                         <el-input v-model="registerForm.psd" placeholder="密码">
                         </el-input>
                     </el-form-item>
-                    <el-form-item label="账号名" prop="account">
-                        <el-input v-model="registerForm.account" placeholder="账号名">
+                    <el-form-item label="姓名" prop="name">
+                        <el-input v-model="registerForm.name" placeholder="姓名">
                         </el-input>
                     </el-form-item>
                     <el-form-item label="性别" prop="sex">
@@ -24,15 +24,39 @@
                             <el-option label="女" value="1"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="专业" prop="major">
-                        <el-input v-model="registerForm.major" placeholder="专业">
-                        </el-input>
-                    </el-form-item>
                     <el-form-item label="身份证号" prop="idCard">
                         <el-input v-model="registerForm.idCard" placeholder="身份证号">
                         </el-input>
                     </el-form-item>
-                    <el-form-item label="身份" prop="type">
+                    <el-form-item label="职位" prop="workPosition">
+                        <el-input v-model="registerForm.workPosition" placeholder="职位">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="工作单位" prop="workUnit">
+                        <el-input v-model="registerForm.workUnit" placeholder="工作单位">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="科考主题" prop="subjectName">
+                        <el-input v-model="registerForm.subjectName" placeholder="科考主题">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="科考区域" prop="researchSite">
+                        <el-input v-model="registerForm.researchSite" placeholder="科考区域">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="来青时间" prop="comeDate">
+                        <el-input v-model="registerForm.comeDate" placeholder="来青时间">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="离青时间" prop="backDate">
+                        <el-input v-model="registerForm.backDate" placeholder="离青时间">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="服务保障需求" prop="demand">
+                        <el-input v-model="registerForm.demand" placeholder="服务保障需求">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="注册级别" prop="type">
                         <el-select v-model="registerForm.type" placeholder="身份" style="width: 100%">
                             <el-option label="系统管理员" value="2"></el-option>
                             <el-option label="科考队队长" value="1"></el-option>
@@ -58,9 +82,15 @@
                     psd: '456123',
                     account: 'zjz123456 ',
                     sex: '0',
-                    major: '计算机',
                     idCard: '430221199713130017',
-                    type: '1'
+                    type: '1',
+                    workUnit:'xxx大学',
+                    workPosition:'',
+                    subjectName:'',
+                    researchSite:'',
+                    demand:'',
+                    backDate:''
+
                 },
                 rules: {
                     name: [
@@ -92,14 +122,15 @@
         },
         mounted() {
             this.showLogin = true;
-            this.AMessage();
+            //this.AMessage();
         },
         methods: {
-            AMessage:function() {
-                alert(this.$store.state.ACCOUNT_NAME);
-            },
+            // AMessage:function() {
+            //     alert(this.$store.state.ACCOUNT_NAME);
+            // },
             register: function () {
-                this.$axios.post(this.commonVar.axiosServe+'/register', this.$qs.stringify(this.registerForm))
+                this.$axios.post(this.commonVar.axiosServe+'/perRegistration', this.$qs.stringify(
+                    this.registerForm))
                     .then(res => {
                         if (res.data.name == '') {
                             this.$alert('姓名不能为空', '提示', {
@@ -110,6 +141,14 @@
                         if (res.data.code == '403') {
                             this.$alert('用户名已存在', '提示', {
                                 confirmButtonText: '确定'
+                            })
+                        }
+                        if (res.data.code == '500') {
+                            this.$alert('登记注册错误，请重试！', '提示', {
+                                confirmButtonText: '确定',
+                                callback: () => {
+                                    this.$router.push('/register')
+                                }
                             })
                         }
                         if (res.data.code == '200') {

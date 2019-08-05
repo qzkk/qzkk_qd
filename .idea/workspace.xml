@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c3e532ec-abe2-420f-81f8-ffee277bfda1" name="Default Changelist" comment="添加登记系统的跳转目录">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/common.var.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/common.var.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/captain/MbeVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/captain/MbeVerify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/PerRegistration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/PerRegistration.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/SerchPerRegister.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/SerchPerRegister.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserVerify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/teammember/Applied.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/teammember/Applied.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/teammember/ApplyTeam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/teammember/ApplyTeam.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +100,11 @@
       <workItem from="1564483134711" duration="9441000" />
       <workItem from="1564534532137" duration="6120000" />
       <workItem from="1564558470298" duration="361000" />
-      <workItem from="1564627204642" duration="22569000" />
+      <workItem from="1564627204642" duration="23096000" />
+      <workItem from="1564732412129" duration="290000" />
+      <workItem from="1564812067339" duration="1689000" />
+      <workItem from="1564908007285" duration="196000" />
+      <workItem from="1564967313190" duration="5363000" />
     </task>
     <task id="LOCAL-00001" summary="添加登记系统的跳转目录">
       <created>1564712766456</created>

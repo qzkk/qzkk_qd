@@ -86,13 +86,8 @@
                 totalNum:0,
                 condition: {
                     name: '',
-                    workPosition: '',
                     workUnit:'',
-                    subject:'',
-                    researchSite:'',
-                    demand:'',
-                    comeDate:'',
-                    backDate:'',
+                    subjectName:'',
                     pageOffset:1,
                     pageSize:10
                 }
@@ -111,7 +106,7 @@
                 var findByConditions=this.commonVar.axiosServe+'/findByConditions';
                 this.condition.pageOffset=this.currentPage-1;
 
-                this.$axios.post((this.condition.workUnit==''&&this.condition.name==''&&this.condition.subject==''?findall:findByConditions), this.$qs.stringify(this.condition))
+                this.$axios.post((this.condition.workUnit==''&&this.condition.name==''&&this.condition.subjectName==''?findall:findByConditions), this.$qs.stringify(this.condition))
                     .then(res => {
                         console.log(this.condition.pageOffset);
                         if (res.data.code == '500') {
