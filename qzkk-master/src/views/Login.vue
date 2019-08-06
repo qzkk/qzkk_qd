@@ -8,7 +8,6 @@
                 <el-form :model="loginForm" :rules="rules" ref="lofinForm">
                     <el-form-item prop="account">
                         <el-input v-model="loginForm.account" placeholder="用户名">
-                            <span>啦啦啦</span>
                         </el-input>
                     </el-form-item>
                     <el-form-item prop="psd">
@@ -19,7 +18,7 @@
                         <el-button type="primary" @click="login" class="submit_btn">登录</el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="register" class="submit_btn">注册</el-button>
+                        <el-button type="primary" @click="register" class="submit_btn">登记注册</el-button>
                     </el-form-item>
                 </el-form>
             </section>

@@ -26,8 +26,9 @@
                         :formatter="sexFromat">
                 </el-table-column>
                 <el-table-column
-                        property="major"
-                        label="专业">
+                        prop="subjectName"
+                        label="科考主题"
+                        width="100">
                 </el-table-column>
                 <el-table-column
                         property="idCard"
@@ -35,7 +36,7 @@
                 </el-table-column>
                 <el-table-column
                         property="type"
-                        label="身份"
+                        label="级别"
                         :formatter = "typeFormat">
                 </el-table-column>
 
@@ -120,7 +121,6 @@
                             confirmButtonText: '确定',
                             callback: () => {
                                 this.tableData.pop(row);
-                                console.log(this.tableData);
                                 this.count--;
                             }
                         })
