@@ -11,7 +11,7 @@
                     <el-menu-item index="manage"><i class="el-icon-menu"></i>首页</el-menu-item>
                     <el-submenu index="2">
                         <template slot="title"><i class="el-icon-document"></i>人员登记管理</template>
-                        <el-menu-item index="serchPR">查看登记人员</el-menu-item>
+                        <el-menu-item index="userList">查看登记人员</el-menu-item>
                         <el-menu-item index="userVerify">登记审核</el-menu-item>
                     </el-submenu>
                     <!--<el-submenu index="2">-->
