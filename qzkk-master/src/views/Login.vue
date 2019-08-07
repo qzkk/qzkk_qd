@@ -62,7 +62,7 @@
         methods: {
             //登录
             login: function() {
-                console.log(this.commonVar.axiosServe);
+                // console.log(this.commonVar.axiosServe);
                 this.$axios.post(this.commonVar.axiosServe+'/login', this.$qs.stringify(this.loginForm))
                     .then(res => {
                         this.$store.commit('setState', res)
@@ -70,15 +70,12 @@
 
 
                         if (this.$store.state.ACCOUNT_TYPE == 0 && res.data.code == 200) {
-
                             this.$router.push('/member');
                         }
                         if (this.$store.state.ACCOUNT_TYPE == 1 && res.data.code == 200) {
-
                             this.$router.push('/captain');
                         }
                         if (this.$store.state.ACCOUNT_TYPE == 2 && res.data.code == 200) {
-
                             this.$router.push('/manage');
                         }
                         if (res.data.code == "401") {

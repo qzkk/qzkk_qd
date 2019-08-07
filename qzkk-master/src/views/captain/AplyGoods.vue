@@ -2,6 +2,12 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+            <el-button
+                    size="small"
+                    type="primary"
+                    @click="handleInitApplication">申请物资</el-button>
+        </div>
+        <div class="table_container">
             <el-table
                     :data="tableData"
                     border
@@ -12,41 +18,43 @@
                 </el-table-column>
                 <el-table-column
                         property=""
-                        label="设备名称"
-                        width="220">
+                        label="申请人"
+                        width="120">
                 </el-table-column>
                 <el-table-column
                         property="name"
-                        label="用户姓名"
-                        width="220">
+                        label="申请物资"
+                        width="200">
                 </el-table-column>
                 <el-table-column
                         property="account"
-                        label="账号名">
+                        label="申请时间"
+                        width="200">
                 </el-table-column>
                 <el-table-column
                         property="idcard"
-                        label="身份证号">
+                        label="描述"
+                        width="500">
                 </el-table-column>
                 <el-table-column
                         property="type"
-                        label="身份"
-                        :formatter="typeFromat">
+                        label="审核人"
+                        width="120">
                 </el-table-column>
                 <el-table-column
                         property="usetime"
-                        label="使用时期"
-                        width="220">
+                        label="审核状态"
+                        width="120">
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
-                                @click="handleEdit(scope.$index, scope.row)">通过</el-button>
+                                @click="handleEdit(scope.$index, scope.row)">查看</el-button>
                         <el-button
                                 size="mini"
                                 type="danger"
-                                @click="handleDelete(scope.$index, scope.row)">不通过</el-button>
+                                @click="handleDelete(scope.$index, scope.row)">撤销</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -62,62 +70,80 @@
             </div>
         </div>
 
+        <el-dialog title="物资申请" :visible.sync="dialogFormVisible" width="40%">
+            <el-form :model="applicationData">
+                <el-form-item label="物资种类" :label-width="formLabelWidth">
+                    <el-select v-model="applicationData.gId" placeholder="请选择物资种类" @change="getNum($event)">
+                        <el-option v-for="goodItem in goodData"  :label="goodItem.name" :value="goodItem.gId" :key="goodItem.name"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="物资数量" :label-width="formLabelWidth">
+                    <el-input-number v-model="applicationData.number" @change="" :min="1" :max="maxNumber" label="描述文字"></el-input-number>
+                    最多选择{{maxNumber}}{{specification}}
+                </el-form-item>
+                <el-form-item label="申请理由" :label-width="formLabelWidth">
+                    <el-input
+                            type="textarea"
+                            :autosize="{ minRows: 6, maxRows: 8}"
+                            placeholder="请输入内容"
+                            v-model="applicationData.description">
+                    </el-input>
+                </el-form-item>
+            </el-form>
+
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handlePostApplication">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
 <script>
     import headTop from '../../components/headTop'
     export default {
-
         data(){
             return {
-                tableData: [{
-                    registe_time: '2016-05-02',
-                    username: '王小虎',
-                    city: '上海市普陀区金沙江路 1518 弄'
-                }],
+                //表格数据
+                tableData: [{}],
+                //分页相关
                 currentRow: null,
                 offset: 0,
                 limit: 20,
                 count: 0,
                 currentPage: 1,
+
+                //表单相关
+                dialogFormVisible: false,
+                formLabelWidth: '120px',
+
+                goodData: [],
+                maxNumber: 0,
+                specification: '',
+                //申请表单的数据
+                applicationData: {
+                    gId: '',
+                    uId: '',
+                    number: '',
+                    description: '',
+                }
             }
         },
         components: {
             headTop,
         },
-        created(){
-            this.initData();
-            //在页面加载时读取localStorage里的状态信息
-            localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));
-
-            //在页面刷新时将vuex里的信息保存到localStorage里
-            window.addEventListener("beforeunload",()=>{
-                localStorage.setItem("userMsg",JSON.stringify(this.$store.state))
-            })
-        },
+        created(){},
         methods: {
-            // async initData(){
-            //     try{
-            //         const countData = await getUserCount();
-            //         if (countData.status == 1) {
-            //             this.count = countData.count;
-            //         }else{
-            //             throw new Error('获取数据失败');
-            //         }
-            //         this.getUsers();
-            //     }catch(err){
-            //         console.log('获取数据失败', err);
-            //     }
-            // },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
+
             handleCurrentChange(val) {
                 this.currentPage = val;
                 this.offset = (val - 1)*this.limit;
                 this.getUsers()
             },
+
             handleEdit(index, row) {
                 console.log(index, row);
                 this.$confirm('通过该申请, 是否继续?', '提示', {
@@ -136,6 +162,7 @@
                     });
                 });
             },
+
             handleDelete(index, row) {
                 console.log(index, row);
                 this.$confirm('拒绝通过该申请, 是否继续?', '提示', {
@@ -154,15 +181,76 @@
                     });
                 });
             },
-            typeFormat(row) {
-                if(row.type == '0') {
-                    return "队员";
-                } else if(row.type == '1') {
-                    return "队长";
-                } else if(row.type == '2') {
-                    return "管理员";
+
+            //初始化表单相关数据
+            handleInitApplication() {
+                this.dialogFormVisible = true;
+                this.goodData = [];
+                this.$axios.get(this.commonVar.axiosServe+'/getGoodTypes')
+                    .then(res => {
+                        //console.log(res);
+                        if(res.data.code == "200") {
+                            for(var i = 0; i < res.data.data.length; i++) {
+                                let tempData = {
+                                    name : res.data.data[i].name,
+                                    gId : res.data.data[i].gId,
+                                    number : res.data.data[i].number - res.data.data[i].usingNumber - res.data.data[i].applyingNumber,
+                                    specification : res.data.data[i].specification
+                                }
+                                this.goodData.push(tempData);
+                            }
+                        }
+                    });
+                this.applicationData.uId = this.$store.state.UID;
+            },
+
+            handlePostApplication() {
+                console.log(this.applicationData);
+                this.$axios.post(this.commonVar.axiosServe+'/addGoodApplication', this.$qs.stringify(this.applicationData))
+                    .then(res => {
+                        if(res.data.code == "200") {
+                            this.$confirm('提交成功', '提示', {
+                                confirmButtonText: '确定',
+                                cancelButtonText: '取消',
+                                type: 'success',
+                                center: true
+                            })
+                        } else if(res.data.code == "500") {
+                            this.$confirm('提交失败，服务器错误', '提示', {
+                                confirmButtonText: '确定',
+                                cancelButtonText: '取消',
+                                type: 'error',
+                                center: true
+                            })
+                        } else if(res.data.code == "501") {
+                            this.$confirm('提交失败，申请的数量过多', '提示', {
+                                confirmButtonText: '确定',
+                                cancelButtonText: '取消',
+                                type: 'error',
+                                center: true
+                            })
+                        }
+                    });
+                this.setEmpty();
+                this.dialogFormVisible = false;
+            },
+
+            getNum(args) {
+                for(var t in this.goodData) {
+                    if(args === this.goodData[t].gId) {
+                        this.maxNumber = this.goodData[t].number;
+                        this.specification = this.goodData[t].specification;
+                    }
                 }
             },
+
+            setEmpty() {
+                this.applicationData.description = "";
+                this.applicationData.gId = "";
+                this.applicationData.number = "";
+                this.applicationData.uId = ""
+            }
+
         },
 
     }

@@ -8,8 +8,8 @@
         </el-col>
         <el-col :span="8" >
         </el-col>
-        <el-col :span="2" v-model="account">
-            <span>欢迎您！管理员{{account}}</span>
+        <el-col :span="2" v-model="info">
+            <span>欢迎您！{{info.type}}{{info.account}}</span>
         </el-col>
         <el-col :span="2" >
 
@@ -24,7 +24,6 @@
                 <el-dropdown-menu slot="dropdown" >
                     <el-dropdown-item command="home">首页</el-dropdown-item>
                     <el-dropdown-item command="command">退出</el-dropdown-item>
-                    <el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
                     <!--<el-dropdown-item>首页</el-dropdown-item>-->
                     <!--<el-dropdown-item>退出</el-dropdown-item>-->
                 </el-dropdown-menu>
@@ -61,31 +60,32 @@
         name: "headTop",
         data() {
             return {
-                account: ''
+                info: {
+                    account: '',
+                    type: ''
+                }
             }
         },
+
         created() {},
-        methods: {
-            handleCommand(command) {
-                //alert(command);
-                let res = {
-                    data: {
-                        account: '',
-                        type: '',
-                        uid: ''
-                    }
-                };
-                this.$store.commit('setState', res);
-                this.account = this.$store.state.ACCOUNT_NAME;
-                alert(this.account);
-                // this.$router.push('/');
+
+        mounted() {
+            this.info.account = this.$store.state.ACCOUNT_NAME;
+
+            if (this.$store.state.ACCOUNT_TYPE == '0') {
+                this.info.type = "队员";
+            } else if (this.$store.state.ACCOUNT_TYPE == '1') {
+                this.info.type = "队长";
+            } else if (this.$store.state.ACCOUNT_TYPE == '2') {
+                this.info.type = "管理员";
             }
         },
-        mounted() {
-            this.account = this.$store.state.ACCOUNT_NAME;
+
+        methods: {
+            handleCommand(command) {}
         },
-        computed: {
-        }
+
+        computed: {}
     }
 </script>
 

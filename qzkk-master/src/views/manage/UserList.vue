@@ -1,6 +1,13 @@
 <template>
     <div class="fillcontain">
         <head-top></head-top>
+        <div class="container ">
+            <span>查询条件</span>
+            <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>
+            <el-input v-model="condition.subjectName" placeholder="请输入登记人员的科考主题" autosize></el-input>
+            <el-input v-model="condition.workUnit" placeholder="请输入登记人员的工作单位" autosize></el-input>
+            <el-button type="primary" plain @click="select">查询</el-button>
+        </div>
         <div class="table_container">
             <el-table
                     :data="tableData"
@@ -13,9 +20,16 @@
                         width="80">
                 </el-table-column>
                 <el-table-column
+                        prop="type"
+                        label="级别"
+                        width="100"
+                        :formatter="typeFormat">
+                </el-table-column>
+                <el-table-column
                         prop="sex"
                         label="性别"
-                        width="50">
+                        width="50"
+                        :formatter="sexFromat">
                 </el-table-column>
                 <el-table-column
                         prop="workPosition"
@@ -28,8 +42,8 @@
                         width="120">
                 </el-table-column>
                 <el-table-column
-                        prop="subject"
-                        label="专题名称"
+                        prop="subjectName"
+                        label="科考主题"
                         width="100">
                 </el-table-column>
                 <el-table-column
@@ -50,18 +64,20 @@
                 <el-table-column
                         prop="demand"
                         label="服务保障需求"
-                        width="300">
+                        width="200">
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
                         <el-button
                                 size="mini"
-                                @click="handleEdit(scope.$index, scope.row)">查看账号信息</el-button>
+                                @click="handleEdit(scope.$index)">查看账号信息
+                        </el-button>
                         <el-button
                                 size="mini"
                                 type="danger"
-                                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                                @click="delUser(scope.$index, scope.row)">删除
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -77,27 +93,18 @@
             </div>
         </div>
         <el-dialog title="人员信息" :visible.sync="dialogFormVisible" width="30%">
-            <el-form :model="form" :disabled="true" >
+            <el-form :model="form" :disabled="true">
                 <el-form-item label="用户姓名" :label-width="formLabelWidth">
-                    <el-input v-model="form.username" autocomplete="off"></el-input>
+                    <el-input v-model="form.name" autocomplete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="账号名" :label-width="formLabelWidth">
                     <el-input v-model="form.account" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别" :label-width="formLabelWidth">
-                    <el-input v-model="form.sex" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="专业" :label-width="formLabelWidth">
-                    <el-input v-model="form.pro" autocomplete="off"></el-input>
+                <el-form-item label="密码" :label-width="formLabelWidth">
+                    <el-input v-model="form.psd" autocomplete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="身份证号" :label-width="formLabelWidth">
-                    <el-input v-model="form.idcard" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="身份" :label-width="formLabelWidth">
-                    <el-input v-model="form.identity" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="注册日期" :label-width="formLabelWidth">
-                    <el-input v-model="form.registe_time" autocomplete="off"></el-input>
+                    <el-input v-model="form.idCard" autocomplete="off"></el-input>
                 </el-form-item>
 
             </el-form>
@@ -107,90 +114,109 @@
 
 <script>
     import headTop from '../../components/headTop'
+
     export default {
         name: "UserList",
-        data(){
+        data() {
             return {
                 tableData: [],
-                currentPage:1,
-                totalNum:0,
+                currentPage: 1,
+                totalNum: 0,
+                form: {},
                 condition: {
                     name: '',
-                    workUnit:'',
-                    subjectName:'',
-                    pageOffset:1,
-                    pageSize:10
+                    workUnit: '',
+                    subjectName: '',
+                    pageOffset: 1,
+                    pageSize: 10
                 },
                 dialogFormVisible: false,
-                formLabelWidth: '120px'
+                formLabelWidth: '80px'
             }
         },
         components: {
             headTop,
         },
-        created(){
+        created() {
             // this.initData();
-            this.getUsers();
+            this.select();
         },
         methods: {
-            //从服务器获取用户数据
-            getUsers: function() {
-
-                this.$axios.get(this.commonVar.axiosServe+'/getUsers')
-                    .then(res => {
-                        console.log(res)
-                        this.tableData = res.data.users;
-                        this.count = res.data.length;
-                        console.log(this.res)
-                    })
+            typeFormat(row) {
+                if (row.type == '0') {
+                    return "队员";
+                } else if (row.type == '1') {
+                    return "队长";
+                } else if (row.type == '2') {
+                    return "管理员";
+                }
             },
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
+            sexFromat(row) {
+                if (row.sex == "0") {
+                    return "男";
+                } else if (row.sex == "1") {
+                    return "女";
+                }
             },
-            handleCurrentChange(val) {
-                this.currentPage = val;
-                this.offset = (val - 1)*this.limit;
-                this.getUsers()
-            },
-            handleEdit(index, row) {
+            handleEdit(index) {
                 this.dialogFormVisible = true;
                 this.form = this.tableData[index];
-                console.log(index, row);
-                console.log(this.form);
             },
-            handleDelete(index, row) {
-                console.log(index, row);
+            current_change(currentPage) {  //改变当前页
+                this.currentPage = currentPage;
+                this.select();
+            },
+            delUser: function (index, row) {
                 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功!'
-                    });
+                    let postData = {
+                        uid: row.uid
+                    };
+                    this.$axios.post(this.commonVar.axiosServe + '/delUser', this.$qs.stringify(postData))
+                        .then(res => {
+                            if (res.data.code == '200') {
+                                this.$alert(res.data.msg, "提示", {
+                                    confirmButtonText: '确定',
+                                    callback: () => {
+                                        this.tableData.pop(row);
+                                    }
+                                })
+                            } else {
+                                this.$alert(res.data.msg, "提示", {
+                                    confirmButtonText: '确定'
+                                })
+                            }
+
+                        })
                 }).catch(() => {
                     this.$message({
                         type: 'info',
                         message: '已取消删除'
                     });
                 });
+
+
             },
-            sexFromat(row) {
-                if(row.sex == "0") {
-                    return "男";
-                } else if(row.sex == "1") {
-                    return "女";
-                }
-            },
-            typeFormat(row) {
-                if(row.type == '0') {
-                    return "队员";
-                } else if(row.type == '1') {
-                    return "队长";
-                } else if(row.type == '2') {
-                    return "管理员";
-                }
+            select() {
+                var findall = this.commonVar.axiosServe + '/findAllToPage';
+                var findByConditions = this.commonVar.axiosServe + '/findByConditions';
+                this.condition.pageOffset = this.currentPage - 1;
+
+                this.$axios.post((this.condition.workUnit == '' && this.condition.name == '' && this.condition.subjectName == '' ? findall : findByConditions), this.$qs.stringify(this.condition))
+                    .then(res => {
+                        if (res.data.code == '500') {
+                            this.$alert(res.data.msg, '提示', {
+                                confirmButtonText: '确定'
+                            })
+                        }
+                        if (res.data.code == '200') {
+                            this.tableData = res.data.list;
+                            this.totalNum = res.data.totalNum;
+                        }
+                    })
             },
         },
 
@@ -199,7 +225,8 @@
 
 <style lang="less" scoped>
     @import '../../style/mixin';
-    .table_container{
+
+    .table_container {
         padding: 20px;
     }
 
