@@ -25,6 +25,7 @@
                     <el-submenu index="3">
                         <template slot="title"><i class="el-icon-setting"></i>物资管理</template>
                         <el-menu-item index="goodList">查看物资</el-menu-item>
+                        <el-menu-item index="addGoods">物资录入</el-menu-item>
                         <el-menu-item index="goodVerify">物资审核</el-menu-item>
                         <!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
                     </el-submenu>

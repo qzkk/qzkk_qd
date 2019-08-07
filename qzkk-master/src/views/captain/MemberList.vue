@@ -65,6 +65,7 @@
                 </el-pagination>
             </div>
         </div>
+<!--        第一个表格-->
         <el-dialog title="人员信息" :visible.sync="dialogFormVisible" width="30%">
             <el-form :model="form" :disabled="true" >
                 <el-form-item label="账号名" :label-width="formLabelWidth">
@@ -88,9 +89,11 @@
                 <el-form-item label="注册日期" :label-width="formLabelWidth">
                     <el-input v-model="form.registe_time" autocomplete="off"></el-input>
                 </el-form-item>
+<!--                对话框表单-->
 
             </el-form>
         </el-dialog>
+<!--        对话框-->
     </div>
 </template>
 

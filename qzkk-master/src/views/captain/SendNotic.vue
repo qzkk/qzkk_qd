@@ -9,7 +9,7 @@
                         <el-col :span="6">
                             <el-input v-model="noticeData.title"></el-input>
                         </el-col>
-                    </el-row>
+                    </el  -row>
                     <h3 class="title">类型</h3>
                     <el-select v-model="noticeData.type" placeholder="请选择">
                         <el-option

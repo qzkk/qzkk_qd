@@ -10,7 +10,7 @@ import axios from "axios";
 
 let config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
-  baseURL: "www.snnukf.tech:8080",
+  // baseURL: "www.snnukf.tech:8080",
 
   // timeout: 60 * 1000, // Timeout
   withCredentials: false, // Check cross-site Access-Control

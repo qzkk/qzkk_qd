@@ -57,7 +57,11 @@ const router = new Router({
       },{
         path: '/goodList',
         component: () => import('./views/manage/GoodList.vue'),
-        meta: ['物资管理', '查看'],
+        meta: ['物资管理', '查看物资'],
+      },{
+        path: '/addgoods',
+        component: () => import('./views/manage/AddGoods.vue'),
+        meta: ['物资管理', '物资录入'],
       },{
         path: '/goodVerify',
         component: () => import('./views/manage/GoodVerify.vue'),
@@ -124,7 +128,11 @@ const router = new Router({
         path: '/sendnotic',
         component: () => import('./views/captain/SendNotic.vue'),
         meta:['信息服务','发布通知']
-      }
+      },{
+          path: '/creatteam',
+          component: () => import('./views/captain/CreatTeam.vue'),
+          meta:['小队管理','申请小队']
+        }
       ]
     },
     {

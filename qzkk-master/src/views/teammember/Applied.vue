@@ -85,7 +85,6 @@
                 <el-form-item label="注册日期" :label-width="formLabelWidth">
                     <el-input v-model="form.registe_time" autocomplete="off"></el-input>
                 </el-form-item>
-
             </el-form>
         </el-dialog>
     </div>
