@@ -55,7 +55,6 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
     export default {
         name: "headTop",
         data() {
@@ -82,7 +81,7 @@
         },
 
         methods: {
-            handleCommand(command) {}
+            //handleCommand(command) {}
         },
 
         computed: {}

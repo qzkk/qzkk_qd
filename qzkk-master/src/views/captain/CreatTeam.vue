@@ -20,7 +20,7 @@
                     </el-input>
                 </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="login" class="submit_btn">提交申请</el-button>
+                <el-button type="primary" @click="login" class="submit_btn">创建</el-button>
             </el-form-item>
                 </el-form>
         </div>
@@ -38,6 +38,7 @@
                     kkTask: '地形考察',
                     subjectContent:'地形考察',
                     researchSite:'环太平洋',
+                    uId:this.$store.state.UID
                 },
                 rules: {
                     name: [
@@ -61,23 +62,12 @@
             headTop,
         },
 
-        created(){
-            this.initData();
-            //在页面加载时读取localStorage里的状态信息
-            localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));
-
-            //在页面刷新时将vuex里的信息保存到localStorage里
-            window.addEventListener("beforeunload",()=>{
-                localStorage.setItem("userMsg",JSON.stringify(this.$store.state))
-            })
-        },
         methods: {
             //登录
             login: function() {
-                console.log(this.commonVar.axiosServe);
+                console.log(this.creatTeam);
                 this.$axios.post(this.commonVar.axiosServe+'/creatTeam', this.$qs.stringify(this.creatTeam))
                     .then(res => {
-                        this.$store.commit('setState', res)
                         // funtion res = {};
                         // console.log("login "+this.$store.getters.getName);
 
@@ -87,7 +77,7 @@
                             })
                         }
                         if (res.data.code == "200") {
-                            this.$alert('申请小队申请已经提交，等待审核', '提示', {
+                            this.$alert('创建小队成功', '提示', {
                                 confirmButtonText: '确定',
                             })
                         }

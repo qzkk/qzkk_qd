@@ -102,7 +102,7 @@ const router = new Router({
         },{
         path: '/memberlist',
         component: () => import('./views/captain/MemberList.vue'),
-        meta: ['人员管理', '查看队员'],
+        meta: ['人员管理', '查看和删除队员'],
         },{
         path: '/mbeverify',
         component: () => import('./views/captain/MbeVerify.vue'),
@@ -131,7 +131,17 @@ const router = new Router({
       },{
           path: '/creatteam',
           component: () => import('./views/captain/CreatTeam.vue'),
-          meta:['小队管理','申请小队']
+          meta:['小队管理','创建小队']
+        },
+        {
+          path: '/AddMember',
+          component: () => import('./views/captain/AddMember.vue'),
+          meta: ['小队管理', '管理成员'],
+        },
+        {
+          path: '/ManageGoods',
+          component: () => import('./views/captain/ManageGoods.vue'),
+          meta: ['管理物资', '物资管理'],
         }
       ]
     },

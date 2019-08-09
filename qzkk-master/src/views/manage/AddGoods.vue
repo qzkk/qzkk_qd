@@ -18,7 +18,7 @@
                         <el-form-item label ='物资描述'  prop="description" >
                     <el-input v-model="newgoods.description" placeholder="物资描述" autosize></el-input>
                         </el-form-item>
-                        <el-form-item label ='规格'  prop="specification" >
+                        <el-form-item label ='规格'  prop="specification" v-if="false">
                     <el-input v-model="newgoods.specification" placeholder="规格" autosize></el-input>
                         </el-form-item>
                     <el-button type="primary" plain @click="addnewgoods">录入</el-button>
@@ -132,7 +132,7 @@
                     identifier:[{required: true,message:'新类型物资编号不能为空', trigger:'blur'}],
                     number:[{required: true,message:'新增数量不能为空', trigger:'blur'}],
                     description:[{required: true,message:'物资描述不能为空', trigger:'blur'}],
-                    specification:[{required: true,message:'规格不能为空', trigger:'blur'}],
+                    //specification:[{required: true,message:'规格不能为空', trigger:'blur'}],
                     name:[{required: true,message:'新类型物资名称', trigger:'blur'}],
                 },
                 currentRow: null,
@@ -182,6 +182,9 @@
                         if (res.data.code == "200"){
                             this.$alert('录入成功', '提示', {
                                 confirmButtonText: '确定',
+                                callback:()=>{
+                                    this.getgoods();
+                                }
                             })
                         }
                     })
@@ -195,11 +198,11 @@
                         this.$alert("物资录入成功", "提示", {
                             confirmButtonText: '确定',
                             callback: () => {
-                                this.$router.go(0)
-                                // 刷新页面
+                                location.reload()
                             }
                         })
-                    })
+
+                    });
             },
         },
     }
