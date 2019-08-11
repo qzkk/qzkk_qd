@@ -79,6 +79,9 @@
                         if (res.data.code == "200") {
                             this.$alert('创建小队成功', '提示', {
                                 confirmButtonText: '确定',
+                                callback: () => {
+                                    location.reload();
+                                }
                             })
                         }
                     })

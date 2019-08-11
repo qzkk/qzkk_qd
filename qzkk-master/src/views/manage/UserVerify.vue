@@ -122,6 +122,7 @@
                             callback: () => {
                                 this.tableData.pop(row);
                                 this.count--;
+                                location.reload();
                             }
                         })
                     })

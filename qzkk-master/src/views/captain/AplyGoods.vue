@@ -213,7 +213,10 @@
                                 confirmButtonText: '确定',
                                 cancelButtonText: '取消',
                                 type: 'success',
-                                center: true
+                                center: true,
+                                callback: () => {
+                                    location.reload();
+                                }
                             })
                         } else if(res.data.code == "500") {
                             this.$confirm('提交失败，服务器错误', '提示', {

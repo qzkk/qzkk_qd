@@ -120,7 +120,6 @@
         },
         methods: {
             select() {
-                location.reload();
                 this.$axios.post(this.commonVar.axiosServe + '/getTeamList', this.$qs.stringify({'uid':this.$store.state.UID}))
                     .then(res => {
                         if (res.data.code == '500') {
@@ -130,13 +129,12 @@
                         }
                         if (res.data.code == '200') {
                             this.tableData = res.data.list;
-                            console.log(this.tableData)
                         }
                     })
             },
             addMemberList: function (index, row) {
                 if (row!=undefined){
-                    this.selectedTid=row.tId;
+                    this.selectedTid=row.tid;
                 }
                 var mListAll=this.commonVar.axiosServe+'/findAllToPage';
                 var mListByc=this.commonVar.axiosServe+'/findByConditions';
@@ -145,6 +143,11 @@
                     .then(res => {
                         if (res.data.code == '200') {
                             this.memberTable = res.data.list;
+                            //这个是uid，后台实体类是uId，因为不同，所以处理
+                            for (var i=0;i<res.data.list.length;i++){
+                                this.memberTable[i].uId=res.data.list[i].uid;
+                            }
+                            console.log(this.memberTable);
                             this.totalNum = res.data.totalNum;
                             this.dialogFormVisible=true;
                         } else {
@@ -161,18 +164,22 @@
             },
             handleSelectionChange(val) {
                 this.yxzData = val;
-                console.log(this.yxzData);
 
             },
             add(){
                 for (var i=0;i<this.yxzData.length;i++){
-                    this.yxzData[i].tid=this.selectedTid;
+                    this.yxzData[i].tId=this.selectedTid;
                 }
-                console.log(this.yxzData);
-                this.$axios.post(this.commonVar.axiosServe+'/addUserToTeam',this.$qs.stringify({"users":this.yxzData}))
+                let reqData={
+                        "userList":this.yxzData
+                }
+                this.$axios.post(this.commonVar.axiosServe+'/addUserToTeam', reqData)
                     .then(res => {
                         this.$alert(res.data.msg, "提示", {
-                            confirmButtonText: '确定'
+                            confirmButtonText: '确定',
+                            callback: () => {
+                                location.reload();
+                            }
                         })
 
                     })

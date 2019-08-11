@@ -4,7 +4,7 @@
         <div align=center class="demo-input-size">
 <!--            新物资录入-->
                 <div class="container ">
-                    <span>新物资录入</span>
+                    <span>物资录入</span>
                     <el-form :model="newgoods" :rules="rules" ref="regForm"  label-width="150px" >
                         <el-form-item label ='新类型物资编号'  prop="identifier" >
                              <el-input  v-model="newgoods.identifier" placeholder="新类型物资编号" autosize></el-input>
@@ -79,7 +79,7 @@
                             <el-form-item label ='数量' prop="addnumber">
                                 <el-input  v-model="form.addnumber" :disabled="false" autocomplete="on"></el-input>
                             </el-form-item>
-                            <el-button type="primary" @click="addgoodsnumber" class="submit_btn">提交申请</el-button>
+                            <el-button type="primary" @click="addgoodsnumber" class="submit_btn">提交</el-button>
                         </template>
                 </el-form>
             </el-dialog>
@@ -183,7 +183,7 @@
                             this.$alert('录入成功', '提示', {
                                 confirmButtonText: '确定',
                                 callback:()=>{
-                                    this.getgoods();
+                                    location.reload();
                                 }
                             })
                         }
