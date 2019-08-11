@@ -163,6 +163,10 @@ const router = new Router({
           component: () => import('./views/teammember/Applied.vue'),
           meta: ['小队管理','已经申请']
         },{
+        path: '/viewTeamInfo',
+        component: () => import('./views/teammember/ViewTeamInfo.vue'),
+        meta: ['小队管理','查看小队信息']
+      },{
           path: '/message',
           component: () => import('./views/teammember/Message.vue'),
           meta: ['信息服务','通知']

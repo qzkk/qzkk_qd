@@ -13,6 +13,7 @@
                         <template slot="title"><i class="el-icon-document"></i>小队管理</template>
                         <el-menu-item index="ApplyTeam">入队申请</el-menu-item>
                         <el-menu-item index="Applied">已经申请</el-menu-item>
+                        <el-menu-item index="ViewTeamInfo">查看小队信息</el-menu-item>
                     </el-submenu>
 
                     <!--<el-submenu index="3">-->

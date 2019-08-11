@@ -13,8 +13,8 @@
         </el-col>
         <el-col :span="2" >
 
-            <el-dropdown menu-align='start' @command="handleCommand" >
-
+            <!--<el-dropdown menu-align='start' @command="handleCommand" >-->
+            <el-dropdown menu-align='start' >
                 <!--<el-dropdown @command="handleCommand" menu-align='start'>-->
                 <!--<img :src="baseImgPath + adminInfo.avatar" class="avator">-->
 
