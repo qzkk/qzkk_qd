@@ -16,12 +16,12 @@
                         width="220">
                 </el-table-column>
                 <el-table-column v-if="false"
-                                 property="gId"
+                                 property="gid"
                                  label="物资id"
                                  width="220">
                 </el-table-column>
                 <el-table-column
-                        property="goodname"
+                        property="name"
                         label="名称"
                         width="220">
                 </el-table-column>
@@ -40,7 +40,7 @@
                         width="220">
                 </el-table-column>
                 <el-table-column
-                        prop="sex"
+                        prop="state"
                         label="审核状态"
                         :formatter="stateFromat">
                 </el-table-column>
@@ -49,12 +49,12 @@
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
                         <el-button
                                 size="mini"
-                                @click="abandonApply(scope.$index, scope.row)">取消申请</el-button>
-                        <el-button
+                                @click="abandonApply(scope.$index, scope.row)" v-if="scope.row.state==0">取消申请</el-button>
+                        <el-button v-if="scope.row.state==1"
                                 size="mini"
                                 type="danger"
                                 @click="returnGoods(scope.$index, scope.row)">归还物资</el-button>
-                        <el-button
+                        <el-button  v-if="scope.row.state==-1"
                                    size="mini"
                                    type="danger"
                                    @click="deleteApply(scope.$index, scope.row)">删除</el-button>
@@ -87,7 +87,7 @@
             stateFromat(row) {
                 if (row.state == "0") {
                     return "审核中";
-                } else if (row.sex == "1") {
+                } else if (row.state == "1") {
                     return "审核通过";
                 }else{
                     return "审核被拒绝";
