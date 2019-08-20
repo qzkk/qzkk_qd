@@ -141,6 +141,7 @@
                 this.condition.pageOffset = this.currentPage - 1;
                 this.$axios.post((this.condition.name == '' ? mListAll : mListByc),this.$qs.stringify(this.condition))
                     .then(res => {
+                        console.log(res.data.list)
                         if (res.data.code == '200') {
                             this.memberTable = res.data.list;
                             //这个是uid，后台实体类是uId，因为不同，所以处理

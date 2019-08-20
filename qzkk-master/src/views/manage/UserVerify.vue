@@ -26,11 +26,6 @@
                         :formatter="sexFromat">
                 </el-table-column>
                 <el-table-column
-                        prop="subjectName"
-                        label="科考主题"
-                        width="100">
-                </el-table-column>
-                <el-table-column
                         property="idCard"
                         label="身份证号">
                 </el-table-column>

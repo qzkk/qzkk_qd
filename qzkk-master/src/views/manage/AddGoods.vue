@@ -18,9 +18,9 @@
                         <el-form-item label ='物资描述'  prop="description" >
                     <el-input v-model="newgoods.description" placeholder="物资描述" autosize></el-input>
                         </el-form-item>
-                        <el-form-item label ='规格'  prop="specification" v-if="false">
-                    <el-input v-model="newgoods.specification" placeholder="规格" autosize></el-input>
-                        </el-form-item>
+<!--                        <el-form-item label ='规格'  prop="specification">-->
+<!--                    <el-input v-model="newgoods.specification" placeholder="规格" autosize></el-input>-->
+<!--                        </el-form-item>-->
                     <el-button type="primary" plain @click="addnewgoods">录入</el-button>
                     </el-form>
                 </div>

@@ -22,17 +22,23 @@
                 </el-table-column>
                 <el-table-column
                         property="name"
-                        label="名称"
-                        width="220">
+                        label="名称">
                 </el-table-column>
                 <el-table-column
                         property="identifier"
-                        label="编号"
-                        width="220">
+                        label="编号">
                 </el-table-column>
                 <el-table-column
                         property="number"
                         label="申请数量">
+                </el-table-column>
+                <el-table-column
+                        property="tname"
+                        label="申请小队">
+                </el-table-column>
+                <el-table-column
+                        property="sn"
+                        label="任务名称">
                 </el-table-column>
                 <el-table-column
                         property="description"
@@ -113,7 +119,8 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post(this.commonVar.axiosServe + '/abandonApply', this.$qs.stringify({'gaid':row.gaId,'gid':row.gId,'number':row.number}))
+                    console.log(row)
+                    this.$axios.post(this.commonVar.axiosServe + '/abandonApply', this.$qs.stringify({'gaid':row.gaId,'gid':row.gid,'number':row.number}))
                         .then(res => {
                             if (res.data.code == '500') {
                                 this.$alert(res.data.msg, '提示', {

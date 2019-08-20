@@ -26,15 +26,15 @@
                 </el-table-column>
                 <el-table-column
                         property="usingNumber"
-                        label="使用数量">
+                        label="使用中数量">
                 </el-table-column>
                 <el-table-column
                         property="applyingNumber"
                         label="申请中数量">
                 </el-table-column>
                 <el-table-column
-                        property="specification"
-                        label="规格">
+                        property="leftNumber"
+                        label="剩余数量">
                 </el-table-column>
                 <el-table-column
                         property="description"
@@ -44,9 +44,9 @@
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
-                        <el-button
-                                size="mini"
-                                @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+<!--                        <el-button-->
+<!--                                size="mini"-->
+<!--                                @click="handleEdit(scope.$index, scope.row)">查看</el-button>-->
                         <el-button
                                 size="mini"
                                 type="danger"
@@ -65,37 +65,37 @@
                 </el-pagination>
             </div>
         </div>
-        <el-dialog title="物资信息" :visible.sync="dialogFormVisible" width="30%">
-            <el-form :model="form" :disabled="true" >
-                <el-form-item label='gId' :label-width="formLabelWidth">
-                    <el-input v-model="form.gId" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="名称" :label-width="formLabelWidth">
-                    <el-input v-model="form.name" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="编号" :label-width="formLabelWidth">
-                    <el-input v-model="form.identifier" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="总数量" :label-width="formLabelWidth">
-                    <el-input v-model="form.number" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="使用中的数量" :label-width="formLabelWidth">
-                    <el-input v-model="form.usingNumber" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="申请中的数量" :label-width="formLabelWidth">
-                    <el-input v-model="form.applyingNumber" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="物资图片" :label-width="formLabelWidth">
-                    <el-input v-model="form.images" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="描述" :label-width="formLabelWidth">
-                    <el-input v-model="form.description" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="规格" :label-width="formLabelWidth">
-                    <el-input v-model="form.specification" autocomplete="off"></el-input>
-                </el-form-item>
-            </el-form>
-        </el-dialog>
+<!--        <el-dialog title="物资信息" :visible.sync="dialogFormVisible" width="30%">-->
+<!--            <el-form :model="form" :disabled="true" >-->
+<!--                <el-form-item label='gId' :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.gId" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="名称" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.name" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="编号" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.identifier" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="总数量" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.number" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="使用中的数量" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.usingNumber" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="申请中的数量" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.applyingNumber" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="物资图片" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.images" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="描述" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.description" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="规格" :label-width="formLabelWidth">-->
+<!--                    <el-input v-model="form.specification" autocomplete="off"></el-input>-->
+<!--                </el-form-item>-->
+<!--            </el-form>-->
+<!--        </el-dialog>-->
     </div>
 </template>
 
@@ -115,6 +115,7 @@
                     images: '',
                     description: '',
                     specification: '',
+                    leftNumber:0
 
                 }],
                 form: {
@@ -145,7 +146,9 @@
                     .then(res =>{
                         this.tableData = res.data.goods;
                         this.count = res.data.length;
-                        console.log(this.res)
+                        for (var i=0;i<this.count;i++){
+                            this.tableData[i].leftNumber=this.tableData[i].number-this.tableData[i].usingNumber
+                        }
                     })
             },
             handleSizeChange(val) {

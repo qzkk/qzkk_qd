@@ -7,18 +7,6 @@
                 <el-input  v-model="creatTeam.name" placeholder="小队名称">
                 </el-input>
             </el-form-item>
-            <el-form-item label ='科考任务' prop="kkTask">
-                <el-input v-model="creatTeam.kkTask" placeholder="科考任务">
-                </el-input>
-            </el-form-item>
-                <el-form-item label ='专题内容' prop="subjectContent">
-                    <el-input v-model="creatTeam.subjectContent" placeholder="专题内容">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label ='科考区域' prop="researchSite">
-                    <el-input v-model="creatTeam.researchSite" placeholder="科考区域">
-                    </el-input>
-                </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="login" class="submit_btn">创建</el-button>
             </el-form-item>
@@ -35,22 +23,10 @@
             return {
                 creatTeam: {
                    name: '一队',
-                    kkTask: '地形考察',
-                    subjectContent:'地形考察',
-                    researchSite:'环太平洋',
                     uId:this.$store.state.UID
                 },
                 rules: {
                     name: [
-                        {required: true, message: '不能为空', trigger: 'blur'},
-                    ],
-                    kkTak: [
-                        {required: true, message: '不能为空', trigger: 'blur'},
-                    ],
-                    subjectContent: [
-                        {required: true, message: '不能为空', trigger: 'blur'},
-                    ],
-                    researchSite: [
                         {required: true, message: '不能为空', trigger: 'blur'},
                     ],
                 },

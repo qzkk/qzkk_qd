@@ -36,14 +36,6 @@
                         <el-input v-model="registerForm.workUnit" placeholder="工作单位">
                         </el-input>
                     </el-form-item>
-                    <el-form-item label="科考主题" prop="subjectName">
-                        <el-input v-model="registerForm.subjectName" placeholder="科考主题">
-                        </el-input>
-                    </el-form-item>
-                    <el-form-item label="科考区域" prop="researchSite">
-                        <el-input v-model="registerForm.researchSite" placeholder="科考区域">
-                        </el-input>
-                    </el-form-item>
                     <el-form-item label="来青时间" prop="comeDate">
                         <el-date-picker
                                 v-model="registerForm.comeDate"
@@ -61,10 +53,6 @@
                                 format="yyyy 年 MM 月 dd 日"
                                 value-format="yyyy年MM月dd日">
                         </el-date-picker>
-                    </el-form-item>
-                    <el-form-item label="服务保障需求" prop="demand">
-                        <el-input v-model="registerForm.demand" placeholder="服务保障需求">
-                        </el-input>
                     </el-form-item>
                     <el-form-item label="注册级别" prop="type">
                         <el-select v-model="registerForm.type" placeholder="身份" style="width: 100%">
@@ -127,15 +115,6 @@
                     ],
                     workPosition: [
                         {required: true, message: '请输入职位', trigger: 'blur'},
-                    ],
-                    subjectName: [
-                        {required: true, message: '请输入科考主题', trigger: 'blur'},
-                    ],
-                    researchSite: [
-                        {required: true, message: '请输入科考区域', trigger: 'blur'},
-                    ],
-                    demand: [
-                        {required: true, message: '请输入服务保障内容', trigger: 'blur'},
                     ],
                     comeDate: [
                         {required: true, message: '请输入来青时间', trigger: 'blur'},

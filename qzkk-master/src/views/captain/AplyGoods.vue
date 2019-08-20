@@ -81,6 +81,16 @@
                     <el-input-number v-model="applicationData.number" @change="" :min="1" :max="maxNumber" label="描述文字"></el-input-number>
                     最多选择{{maxNumber}}{{specification}}
                 </el-form-item>
+                <el-form-item label="选择申请小队" :label-width="formLabelWidth">
+                    <el-select v-model="applicationData.teamId" placeholder="请选择需要申请的小队">
+                        <el-option v-for="teamItem in teamData"  :label="teamItem.name" :value="teamItem.tid" :key="teamItem.name"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="选择申请任务" :label-width="formLabelWidth">
+                    <el-select v-model="applicationData.taskId" placeholder="请选择科考任务">
+                        <el-option v-for="taskItem in taskData"  :label="taskItem.subjectName" :value="taskItem.id" :key="taskItem.name"></el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="申请理由" :label-width="formLabelWidth">
                     <el-input
                             type="textarea"
@@ -118,6 +128,8 @@
                 formLabelWidth: '120px',
 
                 goodData: [],
+                teamData:[],
+                taskData:[],
                 maxNumber: 0,
                 specification: '',
                 //申请表单的数据
@@ -126,6 +138,8 @@
                     uId: '',
                     number: '',
                     description: '',
+                    teamId:'',
+                    taskId:''
                 }
             }
         },
@@ -201,6 +215,22 @@
                             }
                         }
                     });
+                this.$axios.post(this.commonVar.axiosServe+'/getTeamList',this.$qs.stringify({'uid': this.$store.state.UID}))
+                    .then(res => {
+                        //console.log(res);
+                        if(res.data.code == "200") {
+                            this.teamData=res.data.list;
+                            console.log(this.teamData)
+                        }
+                    });
+                this.$axios.post(this.commonVar.axiosServe+'/getTaskList1')
+                    .then(res => {
+                        //console.log(res);
+                        if(res.data.code == "200") {
+                            this.taskData=res.data.list;
+                            console.log(this.taskData)
+                        }
+                    });
                 this.applicationData.uId = this.$store.state.UID;
             },
 
@@ -246,7 +276,16 @@
                     }
                 }
             },
-
+            getNum1(args) {
+                this.$axios.post(this.commonVar.axiosServe+'/getTaskList',this.$qs.stringify({'tid': this.applicationData.teamId}))
+                    .then(res => {
+                        //console.log(res);
+                        if(res.data.code == "200") {
+                            this.taskData=res.data.list;
+                            console.log(this.taskData)
+                        }
+                    });
+            },
             setEmpty() {
                 this.applicationData.description = "";
                 this.applicationData.gId = "";

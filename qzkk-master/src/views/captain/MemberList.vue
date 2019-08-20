@@ -81,7 +81,9 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post(this.commonVar.axiosServe + '/delTeamMember', this.$qs.stringify({'uid':row.uId}))
+
+                    console.log(row.id)
+                    this.$axios.post(this.commonVar.axiosServe + '/delTeamMember', this.$qs.stringify({'id':row.id}))
                         .then(res => {
                             if (res.data.code == '500') {
                                 this.$alert(res.data.msg, '提示', {

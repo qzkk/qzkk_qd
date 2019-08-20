@@ -37,21 +37,6 @@
                         <el-menu-item index="memberlist">查看和删除队员</el-menu-item>
 <!--                        <el-menu-item index="SendNotic">解散小队</el-menu-item>-->
                     </el-submenu>
-                    <el-submenu index="5">
-                        <template slot="title"><i class="el-icon-plus"></i>信息服务</template>
-                        <el-menu-item index="CNotic">通知</el-menu-item>
-                        <el-menu-item index="SendNotic">发布通知</el-menu-item>
-                    </el-submenu>
-                    <el-submenu index="6">
-                        <template slot="title"><i class="el-icon-edit"></i>即时定位</template>
-                        <!-- <el-menu-item index="uploadImg">上传图片</el-menu-item> -->
-                        <el-menu-item index="mapPosition">定位</el-menu-item>
-                    </el-submenu>
-                    <el-submenu index="7">
-                        <template slot="title"><i class="el-icon-star-on"></i>数据分析</template>
-                        <el-menu-item index="visitor">图表分析</el-menu-item>
-                        <!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
-                    </el-submenu>
                     <!--<el-submenu index="7">-->
                     <!--<template slot="title"><i class="el-icon-warning"></i>说明</template>-->
                     <!--<el-menu-item index="explain">说明</el-menu-item>-->
