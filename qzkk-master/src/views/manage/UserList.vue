@@ -1,14 +1,17 @@
 <template>
     <div class="fillcontain">
         <head-top></head-top>
-        <div class="container ">
-            <span>查询条件</span>
-            <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>
-            <el-input v-model="condition.subjectName" placeholder="请输入登记人员的科考主题" autosize></el-input>
-            <el-input v-model="condition.workUnit" placeholder="请输入登记人员的工作单位" autosize></el-input>
-            <el-button type="primary" plain @click="select">查询</el-button>
-        </div>
+
         <div class="table_container">
+            <div class="container " style="margin-bottom: 20px">
+                <el-row :gutter="20" >
+                    <el-col :span="2" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif"><span>查询条件:</span></el-col>
+                    <el-col :span="4"><el-input v-model="condition.name" placeholder="请输入登记人员的姓名" :sapn="4"></el-input></el-col>
+                    <el-col :span="4"><el-input v-model="condition.subjectName" placeholder="请输入登记人员的科考主题" autosize></el-input></el-col>
+                    <el-col :span="4"><el-input v-model="condition.workUnit" placeholder="请输入登记人员的工作单位" autosize></el-input></el-col>
+                    <el-col :span="4"><el-button type="primary" plain @click="select">查询</el-button></el-col>
+                </el-row>
+            </div>
             <el-table
                     :data="tableData"
                     border
@@ -44,12 +47,12 @@
                 <el-table-column
                         prop="subjectName"
                         label="科考主题"
-                        width="100">
+                        width="200">
                 </el-table-column>
                 <el-table-column
                         prop="researchSite"
                         label="科考地点"
-                        width="120">
+                        width="150">
                 </el-table-column>
                 <el-table-column
                         prop="comeDate"
@@ -66,7 +69,10 @@
                         label="服务保障需求"
                         width="200">
                 </el-table-column>
-                <el-table-column label="操作">
+                <el-table-column
+                        label="操作"
+                        fixed="right"
+                        width="250">
                     <template slot-scope="scope">
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
                         <el-button
@@ -84,7 +90,7 @@
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
                         :page-size="10"
-                        :pager-count="6"
+
                         layout="prev, pager, next"
                         @current-change="current_change"
                         :current-page.sync="currentPage"
@@ -114,7 +120,6 @@
 
 <script>
     import headTop from '../../components/headTop'
-
     export default {
         name: "UserList",
         data() {
@@ -228,6 +233,10 @@
 
     .table_container {
         padding: 20px;
+    }
+
+    .el-h4 {
+        line-height: 40px;
     }
 
 </style>

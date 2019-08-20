@@ -14,16 +14,13 @@
         <el-col :span="2" >
 
             <!--<el-dropdown menu-align='start' @command="handleCommand" >-->
-            <el-dropdown menu-align='start' >
+            <el-dropdown menu-align='start' @command="handleCommand">
                 <!--<el-dropdown @command="handleCommand" menu-align='start'>-->
-                <!--<img :src="baseImgPath + adminInfo.avatar" class="avator">-->
-
-
-                <img class="avator">
+                <img class="avator" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png">
 
                 <el-dropdown-menu slot="dropdown" >
                     <el-dropdown-item command="home">首页</el-dropdown-item>
-                    <el-dropdown-item command="command">退出</el-dropdown-item>
+                    <el-dropdown-item command="quit">退出</el-dropdown-item>
                     <!--<el-dropdown-item>首页</el-dropdown-item>-->
                     <!--<el-dropdown-item>退出</el-dropdown-item>-->
                 </el-dropdown-menu>
@@ -81,7 +78,16 @@
         },
 
         methods: {
-            //handleCommand(command) {}
+            handleCommand(command) {
+                switch (command) {
+                    case 'home':
+                        break;
+                    case 'quit':
+                        this.$store.commit('setEmpty');
+                        this.$router.push('/');
+                        break;
+                }
+            }
         },
 
         computed: {}

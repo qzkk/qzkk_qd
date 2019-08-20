@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^2.1.0",
+    "Vue": "latest",
+    "Vuex": "latest",
     "core-js": "^2.6.5",
     "element-ui": "^2.4.5",
     "less": "^3.9.0",
@@ -25,9 +27,7 @@
     "vue-baidu-map": "^0.21.22",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.3",
-    "vuex": "^3.1.1",
-    "Vuex": "latest",
-    "Vue": "latest"
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",

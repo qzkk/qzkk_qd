@@ -1,31 +1,14 @@
 <template>
     <div>
         <head-top></head-top>
+        <div class="table_container">
+            <el-button
+                    size="small"
+                    type="primary"
+                    @click="handleInitApplication">录入物资</el-button>
+        </div>
         <div align=center class="demo-input-size">
-<!--            新物资录入-->
-                <div class="container ">
-                    <span>物资录入</span>
-                    <el-form :model="newgoods" :rules="rules" ref="regForm"  label-width="150px" >
-                        <el-form-item label ='新类型物资编号'  prop="identifier" >
-                             <el-input  v-model="newgoods.identifier" placeholder="新类型物资编号" autosize></el-input>
-                        </el-form-item>
-                        <el-form-item label ='新类型物资名称'  prop="name" >
-                    <el-input  v-model="newgoods.name" placeholder="新类型物资名称" autosize></el-input>
-                        </el-form-item>
-                        <el-form-item label ='新增数量'  prop="number" >
-                    <el-input v-model="newgoods.number" placeholder="新增数量" autosize></el-input>
-                        </el-form-item>
-                        <el-form-item label ='物资描述'  prop="description" >
-                    <el-input v-model="newgoods.description" placeholder="物资描述" autosize></el-input>
-                        </el-form-item>
-<!--                        <el-form-item label ='规格'  prop="specification">-->
-<!--                    <el-input v-model="newgoods.specification" placeholder="规格" autosize></el-input>-->
-<!--                        </el-form-item>-->
-                    <el-button type="primary" plain @click="addnewgoods">录入</el-button>
-                    </el-form>
-                </div>
-
-<!--            新物资提交-->
+            <!--新物资提交-->
             <div class="table_container">
                 <el-table
                         :data="tableData"
@@ -69,17 +52,17 @@
                 </div>
             </div>
 
-<!--            页面显示物资-->
-            <el-dialog title="该物资增加数量" :visible.sync="dialogFormVisible" class="addgoodsnumber" width="30%" >
+            <!--页面显示物资-->
+            <el-dialog title="该物资增加数量" :visible.sync="dialogAddNumberFormVisible" class="addgoodsnumber" width="20%" >
                 <el-form :model="form" :disabled="false" :rules="rules" >
                         <template slot-scope="scope" >
                             <el-form-item label ='编号'>
                                 <el-input v-model="form.identifier" :disabled="true" autocomplete="off" placeholder="增加数量"></el-input>
                             </el-form-item>
-                            <el-form-item label ='数量' prop="addnumber">
-                                <el-input  v-model="form.addnumber" :disabled="false" autocomplete="on"></el-input>
+                            <el-form-item label ='数量'  prop="addnumber">
+                                <el-input-number v-model="form.addnumber" @change="" :min="0" :max="maxNumber"></el-input-number>
                             </el-form-item>
-                            <el-button type="primary" @click="addgoodsnumber" class="submit_btn">提交</el-button>
+                            <el-button type="primary" @click="addGoodsNumber" class="submit_btn">提交</el-button>
                         </template>
                 </el-form>
             </el-dialog>
@@ -94,8 +77,51 @@
                         :total="totalNum">
                 </el-pagination>
             </div>
-<!--            分页-->
+            <!--分页-->
         </div>
+
+        <el-dialog title="物资申请" :visible.sync="dialogFormVisible" width="35%">
+            <el-form :model="newgoods" :rules="rules" ref="regForm"  label-width="150px">
+                <el-row :gutter="20">
+                    <el-col :span="18">
+                        <el-form-item label ='新类型物资编号'  prop="identifier" >
+                            <el-input  v-model="newgoods.identifier" placeholder="新类型物资编号"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="18">
+                        <el-form-item label ='新类型物资名称'  prop="name" >
+                            <el-input  v-model="newgoods.name" placeholder="新类型物资名称"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="18">
+                        <el-form-item label ='新增数量'  prop="number">
+                            <el-input-number v-model="newgoods.number" @change="" :min="0" :max="maxNumber" label="描述文字"></el-input-number>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="18">
+                        <el-form-item label ='物资描述'  prop="description" >
+                            <el-input
+                                    type="textarea"
+                                    :autosize="{ minRows: 6, maxRows: 8}"
+                                    placeholder=""
+                                    v-model="newgoods.description">
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-form>
+
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" plain @click="addNewGoods">录入</el-button>
+            </div>
+        </el-dialog>
     </div>
 
 </template>
@@ -141,6 +167,7 @@
                 count: 0,
                 currentPage: 1,
                 dialogFormVisible: false,
+                dialogAddNumberFormVisible: false,
                 formLabelWidth: '120px'
             }
         },
@@ -151,6 +178,10 @@
             this.getgoods();
         },
         methods: {
+
+            handleInitApplication() {
+                this.dialogFormVisible = true;
+            },
             //页面初始化显示已有的物资
             getgoods:function(){
                 console.log('res')
@@ -161,16 +192,19 @@
                         // console.log(this.res)
                     })
             },
+
             //分页显示
             handleSizeChange(val) {
                 // console.log(`每页 ${val} 条`);
             },
+
             //进行对话框选择
             handleEdit(index, row) {
-                this.dialogFormVisible = true;
+                this.dialogAddNumberFormVisible = true;
                 this.form = this.tableData[index];
             },
-            addnewgoods(){
+
+            addNewGoods(){
                 this.$axios.post(this.commonVar.axiosServe+'/addGood', this.$qs.stringify(
                     this.newgoods))
                     .then(res => {
@@ -183,22 +217,25 @@
                             this.$alert('录入成功', '提示', {
                                 confirmButtonText: '确定',
                                 callback:()=>{
-                                    location.reload();
+                                    //location.reload();
                                 }
                             })
                         }
                     })
             },
+
             //增加物资的方法
-            addgoodsnumber() {
-                this.dialogFormVisible = true;
+            addGoodsNumber() {
+                this.dialogAddNumberFormVisible = true;
                 console.log(this.form);
                 this.$axios.post(this.commonVar.axiosServe+'/addGoodsNumber', this.$qs.stringify(this.form))
                     .then(res => {
                         this.$alert("物资录入成功", "提示", {
                             confirmButtonText: '确定',
                             callback: () => {
-                                location.reload()
+                                this.dialogAddNumberFormVisible = false;
+                                this.tableData = [];
+                                this.getgoods();
                             }
                         })
 
@@ -207,4 +244,11 @@
         },
     }
 </script>
+
+<style lang="less" scoped>
+    @import '../../style/mixin';
+    .table_container{
+        padding: 20px;
+    }
+</style>
 

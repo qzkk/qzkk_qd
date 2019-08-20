@@ -13,8 +13,7 @@ export default new Vuex.Store({
 
     mutations: {
         setState(state, payload) {
-            console.log("))))");
-            console.log(payload);
+
             localStorage.setItem('account', payload.data.account);
             localStorage.setItem('type', payload.data.type);
             localStorage.setItem('uId', payload.data.uId);
@@ -22,6 +21,15 @@ export default new Vuex.Store({
             state.ACCOUNT_NAME = payload.data.account;
             state.ACCOUNT_TYPE = payload.data.type;
             state.UID = payload.data.uId;
+        },
+        setEmpty(state) {
+            localStorage.setItem('account', '');
+            localStorage.setItem('type', '');
+            localStorage.setItem('uId', '');
+
+            state.ACCOUNT_NAME = '';
+            state.ACCOUNT_TYPE = '';
+            state.UID = '';
         }
     },
 

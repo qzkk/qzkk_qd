@@ -30,9 +30,17 @@
         </div>
         <el-dialog title="人员信息" :visible.sync="dialogFormVisible" width="50%">
             <div class="container ">
-                <span>查询条件</span>
-                <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>
-                <el-button type="primary" plain @click="addMemberList">查询</el-button>
+                <el-row :gutter="20" >
+                    <el-col :span="3" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif; font-size: 16px">
+                        <span>查询条件</span>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-button type="primary" plain @click="addMemberList">查询</el-button>
+                    </el-col>
+                </el-row>
             </div>
             <div class="table_container">
                 <el-table
@@ -65,20 +73,36 @@
                     </el-table-column>
 
                 </el-table>
-                <el-button
-                        size="mini"
-                        type="danger"
-                        @click="add">添加
-                </el-button>
-                <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                    <el-pagination
-                            :page-size="10"
-                            :pager-count="6"
-                            layout="prev, pager, next"
-                            @current-change="current_change"
-                            :current-page.sync="currentPage"
-                            :total="totalNum">
-                    </el-pagination>
+
+
+                <div style="margin-top: 20px">
+                    <el-row :gutter="20" >
+                        <el-col :span="18">
+                            <div class="Pagination" style="text-align: left;margin-top: 10px;">
+                                <el-pagination
+                                        :page-size="10"
+                                        :pager-count="6"
+                                        layout="prev, pager, next"
+                                        @current-change="current_change"
+                                        :current-page.sync="currentPage"
+                                        :total="totalNum">
+                                </el-pagination>
+                            </div>
+                        </el-col>
+                        <el-col :span="3">
+                            <el-button
+                                    type="primary"
+                                    @click="add">添加
+                            </el-button>
+                        </el-col>
+
+                        <el-col :span="2">
+                            <el-button
+                                    type="danger"
+                                    @click="this.dialogFormVisible = false">取消
+                            </el-button>
+                        </el-col>
+                    </el-row>
                 </div>
             </div>
         </el-dialog>
@@ -196,6 +220,9 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+    @import '../../style/mixin';
+    .table_container{
+        padding: 20px;
+    }
 </style>
