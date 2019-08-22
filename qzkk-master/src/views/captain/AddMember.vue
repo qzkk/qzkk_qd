@@ -99,7 +99,7 @@
                         <el-col :span="2">
                             <el-button
                                     type="danger"
-                                    @click="this.dialogFormVisible = false">取消
+                                    @click="dialogFormVisible = false">取消
                             </el-button>
                         </el-col>
                     </el-row>

@@ -81,6 +81,17 @@
             handleCommand(command) {
                 switch (command) {
                     case 'home':
+                        var index='';
+                        if (this.info.type=="管理员"){
+                            index='/manage'
+                        }else if (this.info.type=="队长"){
+                            index='/captain'
+                        }else if(this.info.type=="队员"){
+                            index='/member'
+                        }else{
+                            index='/'
+                        }
+                        this.$router.push(index);
                         break;
                     case 'quit':
                         this.$store.commit('setEmpty');
