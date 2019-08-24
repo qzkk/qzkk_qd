@@ -19,6 +19,24 @@
                             v-model="aplyTask.subjectTask">
                     </el-input>
                 </el-form-item>
+                <el-form-item label="开始时间" prop="startDate">
+                    <el-date-picker
+                            v-model="aplyTask.startDate"
+                            type="date"
+                            placeholder="选择日期"
+                            format="yyyy-MM-dd"
+                            value-format="yyyy-MM-dd">
+                    </el-date-picker>
+                </el-form-item>
+                <el-form-item label="结束时间" prop="endDate">
+                    <el-date-picker
+                            v-model="aplyTask.endDate"
+                            type="date"
+                            placeholder="选择日期"
+                            format="yyyy-MM-dd"
+                            value-format="yyyy-MM-dd">
+                    </el-date-picker>
+                </el-form-item>
                 <el-form-item label ="分配任务">
                     <el-button
                             size="mini"
@@ -110,7 +128,9 @@
                     researchSite:'',
                     subjectTask:'',
                     demand:'',
-                    uid:this.$store.state.UID
+                    uid:this.$store.state.UID,
+                    startDate:'',
+                    endDate:''
                 },
                 teamList: [],
                 dialogFormVisible:false,
@@ -143,12 +163,18 @@
                 }
                 this.$axios.post(this.commonVar.axiosServe+'/aplyTask', reqData)
                     .then(res => {
-                        this.$alert(res.data.msg, '提示', {
-                            confirmButtonText: '确定',
-                            callback: () => {
-                                location.reload();
-                            }
-                        })
+                        if (res.data.code==501){
+                            this.$alert(res.data.msg, '提示', {
+                                confirmButtonText: '确定',
+                            })
+                        }else{
+                            this.$alert(res.data.msg, '提示', {
+                                confirmButtonText: '确定',
+                                callback: () => {
+                                    location.reload();
+                                }
+                            })
+                        }
 
                     })
             },
