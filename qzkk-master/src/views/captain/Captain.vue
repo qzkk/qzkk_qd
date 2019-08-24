@@ -40,8 +40,8 @@
                     <el-submenu index="4">
                         <template slot="title"><i class="el-icon-setting"></i>科考任务管理</template>
                         <el-menu-item index="ViewTask">查看任务</el-menu-item>
-                        <el-menu-item index="AplyTask">申请任务</el-menu-item>
-                        <el-menu-item index="DistributeTask">分配任务</el-menu-item>
+                        <el-menu-item index="AplyTask">申请和分配任务</el-menu-item>
+<!--                        <el-menu-item index="DistributeTask">分配任务</el-menu-item>-->
                     </el-submenu>
                     <!--<el-submenu index="7">-->
                     <!--<template slot="title"><i class="el-icon-warning"></i>说明</template>-->
