@@ -30,12 +30,18 @@
                         <el-menu-item index="AplyGoods">申请物资</el-menu-item>
                         <!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
                     </el-submenu>
-                    <el-submenu index="4">
-                        <template slot="title"><i class="el-icon-plus"></i>小队管理</template>
-                        <el-menu-item index="CreatTeam">创建小队</el-menu-item>
+                    <el-submenu index="5">
+                        <template slot="title"><i class="el-icon-setting"></i>小队管理</template>
+                        <el-menu-item index="CreatTeam">申请小队</el-menu-item>
                         <el-menu-item index="AddMember">添加成员</el-menu-item>
                         <el-menu-item index="memberlist">查看和删除队员</el-menu-item>
 <!--                        <el-menu-item index="SendNotic">解散小队</el-menu-item>-->
+                    </el-submenu>
+                    <el-submenu index="4">
+                        <template slot="title"><i class="el-icon-setting"></i>科考任务管理</template>
+                        <el-menu-item index="ViewTask">查看任务</el-menu-item>
+                        <el-menu-item index="AplyTask">申请和分配任务</el-menu-item>
+<!--                        <el-menu-item index="DistributeTask">分配任务</el-menu-item>-->
                     </el-submenu>
                     <!--<el-submenu index="7">-->
                     <!--<template slot="title"><i class="el-icon-warning"></i>说明</template>-->

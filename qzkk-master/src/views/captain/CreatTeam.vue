@@ -8,7 +8,7 @@
                 </el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="login" class="submit_btn">创建</el-button>
+                <el-button type="primary" @click="login" class="submit_btn">申请</el-button>
             </el-form-item>
                 </el-form>
         </div>
