@@ -49,12 +49,12 @@
                     <template slot-scope="scope">
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
                         <el-button
-                                size="mini"
-                                @click="deleteTask(scope.$index, scope.row)" v-if="scope.row.state==0">取消申请</el-button>
-                        <el-button v-if="scope.row.state==1"
                                    size="mini"
                                    type="danger"
                                    @click="viewTeams(scope.$index, scope.row)">查看负责队伍</el-button>
+                        <el-button
+                                size="mini"
+                                @click="deleteTask(scope.$index, scope.row)" v-if="scope.row.state==0">取消申请</el-button>
                         <el-button  v-if="scope.row.state==-1"
                                     size="mini"
                                     type="danger"
