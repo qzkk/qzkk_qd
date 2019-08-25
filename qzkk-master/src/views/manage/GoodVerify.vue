@@ -11,34 +11,44 @@
                         width="100">
                 </el-table-column>
                 <el-table-column
-                        property=""
-                        label="设备名称"
+                        property="gaId"
+                        label="申请编号"
+                        width="100">
+                </el-table-column>
+                <el-table-column
+                        property="gid"
+                        label="物资编号"
+                        width="220">
+                </el-table-column>
+
+                <el-table-column
+                        property="gname"
+                        label="物资名称"
                         width="220">
                 </el-table-column>
                 <el-table-column
-                        property="name"
-                        label="用户姓名"
+                        property="tname"
+                        label="申请小队">
+                </el-table-column>
+                <el-table-column
+                        property="number"
+                        label="申请数量">
+                </el-table-column>
+                <el-table-column
+                        property="taName"
+                        label="任务名称">
+                </el-table-column>
+                <el-table-column
+                        property="applicationTime"
+                        label="申请时间"
                         width="220">
                 </el-table-column>
                 <el-table-column
-                        property="account"
-                        label="账号名">
-                </el-table-column>
-                <el-table-column
-                        property="idcard"
-                        label="身份证号">
-                </el-table-column>
-                <el-table-column
-                        property="type"
-                        label="身份"
-                        :formatter="typeFromat">
-                </el-table-column>
-                <el-table-column
-                        property="usetime"
-                        label="使用时期"
+                        property="description"
+                        label="申请理由"
                         width="220">
                 </el-table-column>
-                <el-table-column label="操作">
+                <el-table-column label="操作" fixed="right" >
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
@@ -66,96 +76,75 @@
 
 <script>
     import headTop from '../../components/headTop'
-    export default {
-        name: "GoodVerify",
-        data(){
+    export default{
+        name:"GoodVerify",
+        data() {
             return {
                 tableData: [{
-                    registe_time: '2016-05-02',
-                    username: '王小虎',
-                    city: '上海市普陀区金沙江路 1518 弄'
+                    gId:'',
+                    gName:'',
+                    tName:'',
+                    number:'',
+                    taName:'',
                 }],
-                currentRow: null,
-                offset: 0,
-                limit: 20,
-                count: 0,
-                currentPage: 1,
             }
         },
+
         components: {
             headTop,
         },
+
         created(){
-            this.initData();
+            this.select();
         },
-        methods: {
-            // async initData(){
-            //     try{
-            //         const countData = await getUserCount();
-            //         if (countData.status == 1) {
-            //             this.count = countData.count;
-            //         }else{
-            //             throw new Error('获取数据失败');
-            //         }
-            //         this.getUsers();
-            //     }catch(err){
-            //         console.log('获取数据失败', err);
-            //     }
-            // },
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
+
+        methods:{
+            select(){
+                this.$axios.get(this.commonVar.axiosServe +  '/getGoodApplicationList')
+                    .then(res =>{
+                        console.log("AAAA"+res.data);
+                        this.tableData =res.data.data;
+                        }
+                    )
             },
-            handleCurrentChange(val) {
-                this.currentPage = val;
-                this.offset = (val - 1)*this.limit;
-                this.getUsers()
-            },
-            handleEdit(index, row) {
-                console.log(index, row);
-                this.$confirm('通过该申请, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.$message({
-                        type: 'success',
-                        message: '审核成功!'
-                    });
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消审核'
-                    });
-                });
-            },
-            handleDelete(index, row) {
-                console.log(index, row);
-                this.$confirm('拒绝通过该申请, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.$message({
-                        type: 'success',
-                        message: '已拒绝审核!'
-                    });
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消审核'
-                    });
-                });
-            },
-            typeFormat(row) {
-                if(row.type == '0') {
-                    return "队员";
-                } else if(row.type == '1') {
-                    return "队长";
-                } else if(row.type == '2') {
-                    return "管理员";
+
+            handleEdit(index, row){
+               var formData = {
+                    gaId: row.gaId
                 }
+                this.$axios.post(this.commonVar.axiosServe + '/examineGoodApplication',this.$qs.stringify(formData))
+                    .then(res =>{
+                        if(res.data.code == '200'){
+                            this.$alert(res.data.msg,'物资审批通过', {
+                                confirmButtonText: '确定',
+                                callback: () => {
+                                    this.tableData = [];
+                                    this.select();
+                                }
+                            })
+                        }
+                    })
             },
-        },
+
+            handleDelete(index,row){
+                var formData = {
+                    gaId: row.gaId
+                }
+                this.$axios.post(this.commonVar.axiosServe + '/refuseGoodApplication',this.$qs.stringify(formData))
+                    .then(res =>{
+                        if(res.data.code == '201'){
+                            this.$alert(res.data.msg,'物资审批不通过', {
+                                confirmButtonText: '确定',
+                                callback: () => {
+                                    this.tableData = [];
+                                    this.select();
+                                }
+                            })
+                        }
+                    })
+            },
+
+        }
 
     }
 </script>

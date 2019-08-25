@@ -33,21 +33,18 @@
                             label="总数量">
                     </el-table-column>
                     <el-table-column label="操作">
-                        <template slot-scope="scope">
                             <el-button
                                     size="mini"
                                     @click="handleEdit(scope.$index, scope.row)">增加</el-button>
-                        </template>
                     </el-table-column>
                 </el-table>
                 <div class="Pagination" style="text-align: left;margin-top: 10px;">
                     <el-pagination
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page="currentPage"
-                            :page-size="20"
-                            layout="total, prev, pager, next"
-                            :total="count">
+                            :page-size= "10"
+                            layout="prev, pager, next"
+                            @current-change="current_change"
+                            :current-page.sync="currentPage"
+                            :total="totalNum">
                     </el-pagination>
                 </div>
             </div>
@@ -67,17 +64,7 @@
                 </el-form>
             </el-dialog>
 <!--            对话框-->
-            <div class="block" align="center">
-                <el-pagination
-                        :page-size="10"
-                        :pager-count="6"
-                        layout="prev, pager, next"
-                        @current-change="current_change"
-                        :current-page.sync="currentPage"
-                        :total="totalNum">
-                </el-pagination>
-            </div>
-            <!--分页-->
+
         </div>
 
         <el-dialog title="物资申请" :visible.sync="dialogFormVisible" width="35%">
@@ -133,17 +120,10 @@
         props: ['msg'],
         data(){
             return {
-                tableData: [{
-                    gId: '1',
-                    name: '卡车',
-                    identifier: 'KC',
-                    number: '200',
-                    usingNumber: '80',
-                    applyingNumber: '20',
-                    images: '',
-                    description: '运输车辆',
-                    specification: '',
-                }],
+                tableData: [],
+                currentPage: 1,
+                totalNum: 1,
+                pageSize:10,
                 newgoods: {
                     identifier: '',
                     number:'',
@@ -161,11 +141,9 @@
                     //specification:[{required: true,message:'规格不能为空', trigger:'blur'}],
                     name:[{required: true,message:'新类型物资名称', trigger:'blur'}],
                 },
-                currentRow: null,
-                offset: 0,
-                limit: 20,
-                count: 0,
-                currentPage: 1,
+
+                maxNumber: 200,
+
                 dialogFormVisible: false,
                 dialogAddNumberFormVisible: false,
                 formLabelWidth: '120px'
@@ -182,19 +160,25 @@
             handleInitApplication() {
                 this.dialogFormVisible = true;
             },
+
             //页面初始化显示已有的物资
             getgoods:function(){
-                console.log('res')
+
                 this.$axios.get(this.commonVar.axiosServe+'/getGoodList')
-                    .then(res =>{
+                // this.$axios.post(this.commonVar.axiosServe+'/getGoodList')
+                    .then(res => {
+                        console.log(res);
                         this.tableData = res.data.goods;
-                        this.count = res.data.length;
-                        // console.log(this.res)
+                        // this.count = res.data.length;
+                        this.totalNum = res.data.length;
                     })
             },
 
             //分页显示
             handleSizeChange(val) {
+                console.log("bbbb"+val);
+                this.PageSize=val;
+                this.currentPage=1;
                 // console.log(`每页 ${val} 条`);
             },
 
@@ -222,6 +206,11 @@
                             })
                         }
                     })
+            },
+            //分页
+            current_change(currentPage) {  //改变当前页
+                this.currentPage = currentPage;
+                this.getgoods();
             },
 
             //增加物资的方法

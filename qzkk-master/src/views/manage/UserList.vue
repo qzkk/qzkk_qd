@@ -90,7 +90,6 @@
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
                         :page-size="10"
-
                         layout="prev, pager, next"
                         @current-change="current_change"
                         :current-page.sync="currentPage"
@@ -209,6 +208,7 @@
                 var findall = this.commonVar.axiosServe + '/findAllToPage';
                 var findByConditions = this.commonVar.axiosServe + '/findByConditions';
                 this.condition.pageOffset = this.currentPage - 1;
+                console.log(this.condition);
 
                 this.$axios.post((this.condition.workUnit == '' && this.condition.name == '' && this.condition.subjectName == '' ? findall : findByConditions), this.$qs.stringify(this.condition))
                     .then(res => {
