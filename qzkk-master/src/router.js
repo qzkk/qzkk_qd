@@ -83,6 +83,14 @@ const router = new Router({
         component: () => import('./views/manage/MapPosition.vue')
       },
         {
+          path: '/aplyTaskByManage',
+          component: () => import('./views/manage/aplyTaskByManage.vue')
+        },
+        {
+          path: '/viewTaskByManage',
+          component: () => import('./views/manage/viewTaskByManage.vue')
+        },
+        {
         path: '/demo',
         component: () => import('./views/demo.vue'),
         meta: [],
