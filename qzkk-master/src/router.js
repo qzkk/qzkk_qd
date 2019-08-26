@@ -67,6 +67,14 @@ const router = new Router({
         component: () => import('./views/manage/GoodVerify.vue'),
         meta: ['物资管理', '物资审核'],
       },{
+        path: '/teamList',
+        component: () => import('./views/manage/TeamList.vue'),
+        meta: ['小队管理', '查看小队'],
+      },{
+        path: '/teamVerify',
+        component: () => import('./views/manage/TeamVerify.vue'),
+        meta: ['小队管理', '小队审批'],
+      }, {
         path: '/notice',
         component: () => import('./views/manage/Notice.vue'),
         meta: ['信息服务', '通知'],
@@ -179,7 +187,11 @@ const router = new Router({
         path: '',
         component: () => import('./views/Home.vue'),
         meta: [],
-      },{
+      }, {
+          path: '/inTeam',
+          component: () => import('./views/teammember/InTeam.vue'),
+          meta: ['信息管理','申请入队']
+        },{
           path: '/applyteam',
           component: () => import('./views/teammember/ApplyTeam.vue'),
           meta: ['小队管理','申请入队']

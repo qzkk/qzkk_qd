@@ -13,7 +13,7 @@
                         <template slot="title"><i class="el-icon-document"></i>信息管理</template>
 <!--                        <el-menu-item index="ApplyTeam">入队申请</el-menu-item>-->
 <!--                        <el-menu-item index="Applied">已经申请</el-menu-item>-->
-                        <el-menu-item index="">查看所属队伍</el-menu-item>
+                        <el-menu-item index="inTeam">查看所属队伍</el-menu-item>
 <!--                        <el-menu-item index="">查看物资</el-menu-item>-->
 <!--                        <el-menu-item index="">查看队友</el-menu-item>-->
                     </el-submenu>
