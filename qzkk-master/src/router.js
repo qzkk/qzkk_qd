@@ -91,6 +91,14 @@ const router = new Router({
         component: () => import('./views/manage/MapPosition.vue')
       },
         {
+          path: '/aplyTaskByManage',
+          component: () => import('./views/manage/aplyTaskByManage.vue')
+        },
+        {
+          path: '/viewTaskByManage',
+          component: () => import('./views/manage/viewTaskByManage.vue')
+        },
+        {
         path: '/demo',
         component: () => import('./views/demo.vue'),
         meta: [],
@@ -150,6 +158,21 @@ const router = new Router({
           path: '/ManageGoods',
           component: () => import('./views/captain/ManageGoods.vue'),
           meta: ['管理物资', '物资管理'],
+        },
+        {
+          path: '/ViewTask',
+          component: () => import('./views/captain/ViewTask.vue'),
+          meta: ['科考任务管理', '查看任务'],
+        },
+        {
+          path: '/AplyTask',
+          component: () => import('./views/captain/AplyTask.vue'),
+          meta: ['科考任务管理', '申请任务'],
+        },
+        {
+          path: '/DistributeTask',
+          component: () => import('./views/captain/DistributeTask.vue'),
+          meta: ['科考任务管理', '分配任务'],
         }
       ]
     },
