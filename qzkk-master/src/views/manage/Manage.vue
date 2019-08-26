@@ -30,10 +30,16 @@
                         <!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
                     </el-submenu>
                     <el-submenu index="4">
+                        <template slot="title"><i class="el-icon-star-on"></i>小队管理</template>
+                        <el-menu-item index="teamList">查看小队</el-menu-item>
+                        <el-menu-item index="teamVerify">审核小队</el-menu-item>
+                    </el-submenu>
+                    <el-submenu index="5">
                         <template slot="title"><i class="el-icon-plus"></i>信息服务</template>
                         <el-menu-item index="noticeDeliver">发布通知</el-menu-item>
                         <el-menu-item index="noticeVerify">删除通知</el-menu-item>
                     </el-submenu>
+
                     <el-submenu index="6">
                         <template slot="title"><i class="el-icon-star-on"></i>数据分析</template>
                         <el-menu-item index="visitor">图表分析</el-menu-item>
