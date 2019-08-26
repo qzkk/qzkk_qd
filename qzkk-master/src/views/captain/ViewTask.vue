@@ -32,26 +32,30 @@
                         label="服务保障需求">
                 </el-table-column>
                 <el-table-column
-                        property="name"
-                        label="发布人">
+                        property="sd"
+                        label="开始时间">
                 </el-table-column>
                 <el-table-column
-                        prop="type"
-                        label="发布人级别"
-                        :formatter="typeFromat">
+                        prop="ed"
+                        label="结束时间">
                 </el-table-column>
                 <el-table-column
                         prop="state"
                         label="审核状态"
                         :formatter="stateFromat">
                 </el-table-column>
+                <el-table-column
+                        label="负责队伍">
+                    <template slot-scope="scope">
+                        <el-button
+                                size="mini"
+                                type="primary"
+                                @click="viewTeams(scope.$index, scope.row)">查看</el-button>
+                    </template>
+                </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
-                        <el-button
-                                   size="mini"
-                                   type="danger"
-                                   @click="viewTeams(scope.$index, scope.row)">查看负责队伍</el-button>
                         <el-button
                                 size="mini"
                                 @click="deleteTask(scope.$index, scope.row)" v-if="scope.row.state==0">取消申请</el-button>
@@ -59,11 +63,12 @@
                                     size="mini"
                                     type="danger"
                                     @click="deleteTask(scope.$index, scope.row)">删除</el-button>
+                        <el-button type="success" v-if="scope.row.state==1" icon="el-icon-check" size="mini" ></el-button>
                     </template>
                 </el-table-column>
             </el-table>
         </div>
-        <el-dialog title="人员信息" :visible.sync="dialogFormVisible" width="50%">
+        <el-dialog title="小队信息" :visible.sync="dialogFormVisible" width="50%">
 <!--            <div class="container ">-->
 <!--                <span>查询条件</span>-->
 <!--                <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>-->

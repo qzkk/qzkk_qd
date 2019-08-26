@@ -30,15 +30,20 @@
                         <!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
                     </el-submenu>
                     <el-submenu index="4">
-                        <template slot="title"><i class="el-icon-plus"></i>信息服务</template>
-                        <el-menu-item index="noticeDeliver">发布通知</el-menu-item>
-                        <el-menu-item index="noticeVerify">删除通知</el-menu-item>
+                        <template slot="title"><i class="el-icon-setting"></i>任务管理</template>
+                        <el-menu-item index="examineTaskByManage">审批任务</el-menu-item>
+                        <el-menu-item index="viewTaskByManage">查看任务</el-menu-item>
                     </el-submenu>
-                    <el-submenu index="6">
-                        <template slot="title"><i class="el-icon-star-on"></i>数据分析</template>
-                        <el-menu-item index="visitor">图表分析</el-menu-item>
-                        <!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
-                    </el-submenu>
+<!--                    <el-submenu index="4">-->
+<!--                        <template slot="title"><i class="el-icon-plus"></i>信息服务</template>-->
+<!--                        <el-menu-item index="noticeDeliver">发布通知</el-menu-item>-->
+<!--                        <el-menu-item index="noticeVerify">删除通知</el-menu-item>-->
+<!--                    </el-submenu>-->
+<!--                    <el-submenu index="6">-->
+<!--                        <template slot="title"><i class="el-icon-star-on"></i>数据分析</template>-->
+<!--                        <el-menu-item index="visitor">图表分析</el-menu-item>-->
+<!--                        &lt;!&ndash; <el-menu-item index="newMember">用户数据</el-menu-item> &ndash;&gt;-->
+<!--                    </el-submenu>-->
                     <!--<el-submenu index="7">-->
                         <!--<template slot="title"><i class="el-icon-warning"></i>说明</template>-->
                         <!--<el-menu-item index="explain">说明</el-menu-item>-->

@@ -40,19 +40,14 @@
                         width="80">
                 </el-table-column>
                 <el-table-column
+                        prop="idCard"
+                        label="身份证号"
+                        width="160">
+                </el-table-column>
+                <el-table-column
                         prop="workUnit"
                         label="工作单位"
                         width="120">
-                </el-table-column>
-                <el-table-column
-                        prop="subjectName"
-                        label="科考主题"
-                        width="200">
-                </el-table-column>
-                <el-table-column
-                        prop="researchSite"
-                        label="科考地点"
-                        width="150">
                 </el-table-column>
                 <el-table-column
                         prop="comeDate"

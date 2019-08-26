@@ -83,12 +83,14 @@ const router = new Router({
         component: () => import('./views/manage/MapPosition.vue')
       },
         {
-          path: '/aplyTaskByManage',
-          component: () => import('./views/manage/aplyTaskByManage.vue')
+          path: '/examineTaskByManage',
+          component: () => import('./views/manage/examineTaskByManage.vue'),
+          meta: ['任务管理', '审批任务'],
         },
         {
           path: '/viewTaskByManage',
-          component: () => import('./views/manage/viewTaskByManage.vue')
+          component: () => import('./views/manage/viewTaskByManage.vue'),
+          meta: ['人员管理', '查看任务'],
         },
         {
         path: '/demo',
