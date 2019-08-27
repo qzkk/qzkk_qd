@@ -93,9 +93,9 @@
                         :total="totalNum">
                 </el-pagination>
             </div>
-            <el-button  size="mini"
-                        type="primary"
-                        @click="exportTask()">导出</el-button>
+<!--            <el-button  size="mini"-->
+<!--                        type="primary"-->
+<!--                        @click="exportTask()">导出</el-button>-->
         </div>
         <el-dialog title="小队信息" :visible.sync="dialogFormVisible" width="50%">
             <!--            <div class="container ">-->
@@ -217,12 +217,16 @@
         },
         methods:{
             exportTask(){
-                let reqData={
-                    "taskList":this.tableData
-                }
-                this.$axios.post(this.commonVar.axiosServe + '/exportTask', reqData)
-                    .then(res => {
-                    })
+                // let reqData={
+                //     "taskList":this.tableData
+                // }
+
+                var taskList={"taskList":[1,2,3]}
+                location.href=this.commonVar.axiosServe + '/exportTask?a='+"\""+taskList+"\"";
+
+                // this.$axios.get(this.commonVar.axiosServe + '/exportTask', reqData)
+                //     .then(res => {
+                //     })
             },
             stateChange(){
             },
