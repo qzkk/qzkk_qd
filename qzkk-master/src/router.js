@@ -71,6 +71,10 @@ const router = new Router({
         component: () => import('./views/manage/TeamList.vue'),
         meta: ['小队管理', '查看小队'],
       },{
+        path: '/limitsManage',
+        component: () => import('./views/manage/LimitsManage.vue'),
+        meta: ['权限管理'],
+      },{
         path: '/teamVerify',
         component: () => import('./views/manage/TeamVerify.vue'),
         meta: ['小队管理', '小队审批'],

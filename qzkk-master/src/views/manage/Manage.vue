@@ -34,6 +34,7 @@
                         <el-menu-item index="examineTaskByManage">审批任务</el-menu-item>
                         <el-menu-item index="viewTaskByManage">查看任务</el-menu-item>
                     </el-submenu>
+                    <el-menu-item index="limitsManage"><i class="el-icon-setting"></i>权限管理</el-menu-item>
 <!--                    <el-submenu index="4">-->
 <!--                        <template slot="title"><i class="el-icon-plus"></i>信息服务</template>-->
 <!--                        <el-menu-item index="noticeDeliver">发布通知</el-menu-item>-->

@@ -20,6 +20,7 @@
 
                 <el-dropdown-menu slot="dropdown" >
                     <el-dropdown-item command="home">首页</el-dropdown-item>
+                    <el-dropdown-item command="limit">权限管理</el-dropdown-item>
                     <el-dropdown-item command="quit">退出</el-dropdown-item>
                     <!--<el-dropdown-item>首页</el-dropdown-item>-->
                     <!--<el-dropdown-item>退出</el-dropdown-item>-->
@@ -29,26 +30,6 @@
         </el-col>
 
     </el-row>
-    <!--<div class="header_container">-->
-        <!--<el-breadcrumb separator="/">-->
-            <!--<el-breadcrumb-item :to="{ path: '/manage' }">首页</el-breadcrumb-item>-->
-            <!--<el-breadcrumb-item v-for="(item, index) in $route.meta" :key="index">{{item}}</el-breadcrumb-item>-->
-        <!--</el-breadcrumb>-->
-
-        <!--<el-dropdown menu-align='start'>-->
-        <!--&lt;!&ndash;<el-dropdown @command="handleCommand" menu-align='start'>&ndash;&gt;-->
-            <!--&lt;!&ndash;<img :src="baseImgPath + adminInfo.avatar" class="avator">&ndash;&gt;-->
-            <!--&lt;!&ndash;<el-breadcrumb style="float: right">欢迎您！管理员</el-breadcrumb>&ndash;&gt;-->
-            <!--<img class="avator">-->
-
-            <!--<el-dropdown-menu slot="dropdown">-->
-                <!--&lt;!&ndash;<el-dropdown-item command="home">首页</el-dropdown-item>&ndash;&gt;-->
-                <!--&lt;!&ndash;<el-dropdown-item command="signout">退出</el-dropdown-item>&ndash;&gt;-->
-                <!--<el-dropdown-item>首页</el-dropdown-item>-->
-                <!--<el-dropdown-item>退出</el-dropdown-item>-->
-            <!--</el-dropdown-menu>-->
-        <!--</el-dropdown>-->
-    <!--</div>-->
 </template>
 
 <script>
@@ -92,6 +73,9 @@
                             index='/'
                         }
                         this.$router.push(index);
+                        break;
+                    case 'limit':
+                        this.$router.push('/limitsManage');
                         break;
                     case 'quit':
                         this.$store.commit('setEmpty');
