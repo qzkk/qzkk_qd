@@ -1,7 +1,7 @@
 <template>
     <div>
         <head-top></head-top>
-        <section class="data_section">
+        <section class="data_section" v-if="this.$store.state.ACCOUNT_TYPE == '2'">
             <header class="section_title">功能列表</header>
             <el-row :gutter="20" style="margin-bottom: 10px;">
                 <el-col :span="4"><div class="data_list all_head"><span class="data_num head">人员管理</span></div></el-col>
@@ -21,6 +21,34 @@
             </el-row>
             <el-row :gutter="20" style="margin-bottom: 10px;">
                 <el-col :span="4"><div class="data_list all_head"><span class="data_num head">权限管理</span></div></el-col>
+            </el-row>
+        </section>
+
+        <section class="data_section" v-if="this.$store.state.ACCOUNT_TYPE == '1'">
+            <header class="section_title">功能列表</header>
+            <el-row :gutter="20" style="margin-bottom: 10px;">
+                <el-col :span="4"><div class="data_list all_head"><span class="data_num head">物资管理</span></div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{userCount}}</span>管理物资</div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{orderCount}}</span> 申请物资</div></el-col>
+            </el-row>
+            <el-row :gutter="20" style="margin-bottom: 10px;">
+                <el-col :span="4"><div class="data_list all_head"><span class="data_num head">小队管理</span></div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{allUserCount}}</span> 申请小队</div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{allOrderCount}}</span> 添加成员</div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{allAdminCount}}</span> 查看和删除队员</div></el-col>
+            </el-row>
+            <el-row :gutter="20" style="margin-bottom: 10px;">
+                <el-col :span="4"><div class="data_list all_head"><span class="data_num head">科考任务管理</span></div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{userCount}}</span> 查看任务</div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{orderCount}}</span> 申请和分配任务</div></el-col>
+            </el-row>
+        </section>
+
+        <section class="data_section" v-if="this.$store.state.ACCOUNT_TYPE == '0'">
+            <header class="section_title">功能列表</header>
+            <el-row :gutter="20" style="margin-bottom: 10px;">
+                <el-col :span="4"><div class="data_list all_head"><span class="data_num head">信息管理</span></div></el-col>
+                <el-col :span="4"><div class="data_list"><span class="data_num">{{userCount}}</span>查看所属队伍</div></el-col>
             </el-row>
         </section>
     </div>
