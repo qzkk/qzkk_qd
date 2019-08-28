@@ -93,9 +93,9 @@
                         :total="totalNum">
                 </el-pagination>
             </div>
-<!--            <el-button  size="mini"-->
-<!--                        type="primary"-->
-<!--                        @click="exportTask()">导出</el-button>-->
+            <el-button  size="mini"
+                        type="primary"
+                        @click="exportTask()">导出</el-button>
         </div>
         <el-dialog title="小队信息" :visible.sync="dialogFormVisible" width="50%">
             <!--            <div class="container ">-->
@@ -217,12 +217,18 @@
         },
         methods:{
             exportTask(){
+                var taskList=this.tableData
+                taskList=JSON.stringify(taskList);
+                taskList=taskList.replace(/\[/g,"%5B");
+                taskList=taskList.replace(/]/g,"%5D");
+                taskList=taskList.replace(/{/g,"%7B");
+                taskList=taskList.replace(/}/g,"%7D");
+                console.log(taskList)
                 // let reqData={
                 //     "taskList":this.tableData
                 // }
 
-                var taskList={"taskList":[1,2,3]}
-                location.href=this.commonVar.axiosServe + '/exportTask?a='+"\""+taskList+"\"";
+                location.href=this.commonVar.axiosServe + '/exportTask?taskList='+taskList;
 
                 // this.$axios.get(this.commonVar.axiosServe + '/exportTask', reqData)
                 //     .then(res => {
