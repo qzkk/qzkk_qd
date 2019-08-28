@@ -84,18 +84,27 @@
                     </template>
                 </el-table-column>
             </el-table>
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination
-                        :page-size="10"
-                        layout="prev, pager, next"
-                        @current-change="current_change"
-                        :current-page.sync="currentPage"
-                        :total="totalNum">
-                </el-pagination>
+            <div style="margin-top: 20px">
+                <el-row :gutter="20" >
+                    <el-col :span="21">
+                        <div class="Pagination" style="text-align: left;margin-top: 10px;">
+                            <el-pagination
+                                    :page-size="10"
+                                    layout="prev, pager, next"
+                                    @current-change="current_change"
+                                    :current-page.sync="currentPage"
+                                    :total="totalNum">
+                            </el-pagination>
+                        </div>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-button  size="mini"
+                                    type="primary"
+                                    @click="exportTask()">导出</el-button>
+                    </el-col>
+
+                </el-row>
             </div>
-            <el-button  size="mini"
-                        type="primary"
-                        @click="exportTask()">导出</el-button>
         </div>
         <el-dialog title="小队信息" :visible.sync="dialogFormVisible" width="50%">
             <!--            <div class="container ">-->
@@ -223,16 +232,7 @@
                 taskList=taskList.replace(/]/g,"%5D");
                 taskList=taskList.replace(/{/g,"%7B");
                 taskList=taskList.replace(/}/g,"%7D");
-                console.log(taskList)
-                // let reqData={
-                //     "taskList":this.tableData
-                // }
-
                 location.href=this.commonVar.axiosServe + '/exportTask?taskList='+taskList;
-
-                // this.$axios.get(this.commonVar.axiosServe + '/exportTask', reqData)
-                //     .then(res => {
-                //     })
             },
             stateChange(){
             },
