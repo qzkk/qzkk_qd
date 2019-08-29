@@ -13,18 +13,15 @@
                     border
                     style="width: 100%">
                 <el-table-column
-                        type="index"
-                        width="100">
+                        type="index">
                 </el-table-column>
                 <el-table-column
                         property=""
-                        label="申请人"
-                        width="120">
+                        label="申请人">
                 </el-table-column>
                 <el-table-column
                         property="name"
-                        label="申请物资"
-                        width="200">
+                        label="申请物资">
                 </el-table-column>
                 <el-table-column
                         property="account"
@@ -33,18 +30,15 @@
                 </el-table-column>
                 <el-table-column
                         property="idcard"
-                        label="描述"
-                        width="500">
+                        label="描述">
                 </el-table-column>
                 <el-table-column
                         property="type"
-                        label="审核人"
-                        width="120">
+                        label="审核人">
                 </el-table-column>
                 <el-table-column
                         property="usetime"
-                        label="审核状态"
-                        width="120">
+                        label="审核状态">
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
@@ -79,17 +73,19 @@
                 </el-form-item>
                 <el-form-item label="物资数量" :label-width="formLabelWidth">
                     <el-input-number v-model="applicationData.number" @change="" :min="1" :max="maxNumber" label="描述文字"></el-input-number>
-                    最多选择{{maxNumber}}{{specification}}
+                    (最多选择{{maxNumber}}{{specification}})
                 </el-form-item>
-                <el-form-item label="选择申请小队" :label-width="formLabelWidth">
+                <el-form-item label="选择科考小队" :label-width="formLabelWidth">
                     <el-select v-model="applicationData.teamId" placeholder="请选择需要申请的小队">
                         <el-option v-for="teamItem in teamData"  :label="teamItem.name" :value="teamItem.tid" :key="teamItem.name"></el-option>
                     </el-select>
+                    (列表为已审核通过的小队)
                 </el-form-item>
-                <el-form-item label="选择申请任务" :label-width="formLabelWidth">
+                <el-form-item label="选择科考任务" :label-width="formLabelWidth">
                     <el-select v-model="applicationData.taskId" placeholder="请选择科考任务">
-                        <el-option v-for="taskItem in taskData"  :label="taskItem.subjectName" :value="taskItem.id" :key="taskItem.name"></el-option>
+                        <el-option v-for="taskItem in taskData"  :label="taskItem.sn" :value="taskItem.id" :key="taskItem.name"></el-option>
                     </el-select>
+                    (列表为已审核通过的任务)
                 </el-form-item>
                 <el-form-item label="申请理由" :label-width="formLabelWidth">
                     <el-input
@@ -215,15 +211,14 @@
                             }
                         }
                     });
-                this.$axios.post(this.commonVar.axiosServe+'/getTeamList',this.$qs.stringify({'uid': this.$store.state.UID}))
+                this.$axios.post(this.commonVar.axiosServe+'/teamListOfAccessByUid',this.$qs.stringify({'uid': this.$store.state.UID}))
                     .then(res => {
                         //console.log(res);
                         if(res.data.code == "200") {
                             this.teamData=res.data.list;
-                            console.log(this.teamData)
                         }
                     });
-                this.$axios.post(this.commonVar.axiosServe+'/getTaskList1')
+                this.$axios.post(this.commonVar.axiosServe+'/getTaskListOfAccessByUid',this.$qs.stringify({'uid': this.$store.state.UID}))
                     .then(res => {
                         //console.log(res);
                         if(res.data.code == "200") {

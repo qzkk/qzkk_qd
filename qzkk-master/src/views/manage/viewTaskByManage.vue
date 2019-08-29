@@ -99,8 +99,8 @@
                     </el-col>
                     <el-col :span="3">
                         <el-button  size="mini"
-                                    type="primary"
-                                    @click="exportTask()">导出</el-button>
+                                    type="success"
+                                    @click="exportTask()">导出Excel</el-button>
                     </el-col>
 
                 </el-row>

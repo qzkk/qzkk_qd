@@ -10,21 +10,19 @@
                         type="index"
                         width="100">
                 </el-table-column>
-                <el-table-column
-                        property="gaId"
-                        label="申请编号"
-                        width="100">
-                </el-table-column>
+<!--                <el-table-column-->
+<!--                        property="gaId"-->
+<!--                        label="申请编号"-->
+<!--                        width="100">-->
+<!--                </el-table-column>-->
                 <el-table-column
                         property="gid"
-                        label="物资编号"
-                        width="220">
+                        label="物资编号">
                 </el-table-column>
 
                 <el-table-column
                         property="gname"
-                        label="物资名称"
-                        width="220">
+                        label="物资名称">
                 </el-table-column>
                 <el-table-column
                         property="tname"
@@ -41,12 +39,12 @@
                 <el-table-column
                         property="applicationTime"
                         label="申请时间"
-                        width="220">
+                        width="180">
                 </el-table-column>
                 <el-table-column
                         property="description"
                         label="申请理由"
-                        width="220">
+                        width="120">
                 </el-table-column>
                 <el-table-column label="操作" fixed="right" >
                     <template slot-scope="scope">
