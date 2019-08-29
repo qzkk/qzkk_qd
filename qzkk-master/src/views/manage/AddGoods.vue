@@ -33,9 +33,12 @@
                             label="总数量">
                     </el-table-column>
                     <el-table-column label="操作">
+                        <template slot-scope="scope">
                             <el-button
                                     size="mini"
                                     @click="handleEdit(scope.$index, scope.row)">增加</el-button>
+                        </template>
+
                     </el-table-column>
                 </el-table>
                 <div class="Pagination" style="text-align: left;margin-top: 10px;">
