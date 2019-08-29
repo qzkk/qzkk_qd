@@ -50,6 +50,7 @@
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
+                                type="success"
                                 @click="handleEdit(scope.$index, scope.row)">通过</el-button>
                         <el-button
                                 size="mini"
