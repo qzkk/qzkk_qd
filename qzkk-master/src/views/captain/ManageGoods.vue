@@ -58,7 +58,7 @@
                                 @click="abandonApply(scope.$index, scope.row)" v-if="scope.row.state==0">取消申请</el-button>
                         <el-button v-if="scope.row.state==1"
                                 size="mini"
-                                type="danger"
+                                type="success"
                                 @click="returnGoods(scope.$index, scope.row)">归还物资</el-button>
                         <el-button  v-if="scope.row.state==-1"
                                    size="mini"
