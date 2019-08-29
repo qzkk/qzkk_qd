@@ -6,10 +6,10 @@
             <div class="container " style="margin-bottom: 20px">
                 <el-row :gutter="20" >
                     <el-col :span="2" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif"><span>查询条件:</span></el-col>
-                    <el-col :span="4"><el-input v-model="condition.name" placeholder="请输入登记人员的姓名" :sapn="4"></el-input></el-col>
-                    <el-col :span="4"><el-input v-model="condition.subjectName" placeholder="请输入登记人员的科考主题" autosize></el-input></el-col>
-                    <el-col :span="4"><el-input v-model="condition.workUnit" placeholder="请输入登记人员的工作单位" autosize></el-input></el-col>
-                    <el-col :span="4"><el-button type="primary" plain @click="select">查询</el-button></el-col>
+                    <el-col :span="5"><el-input v-model="condition.name" placeholder="请输入登记人员的姓名" :sapn="4"></el-input></el-col>
+                    <el-col :span="5"><el-input v-model="condition.subjectName" placeholder="请输入登记人员的科考主题" autosize></el-input></el-col>
+                    <el-col :span="5"><el-input v-model="condition.workUnit" placeholder="请输入登记人员的工作单位" autosize></el-input></el-col>
+                    <el-col :span="5"><el-button type="primary" plain @click="select">查询</el-button></el-col>
                 </el-row>
             </div>
             <el-table
