@@ -145,8 +145,8 @@
         methods: {
             select() {
                 this.$axios.post(this.commonVar.axiosServe + '/teamListOfAccessByUid', this.$qs.stringify({'uid':this.$store.state.UID}))
-                    .then(res => {
-                        if (res.data.code == '500') {
+                            .then(res => {
+                                if (res.data.code == '500') {
                             this.$alert(res.data.msg, '提示', {
                                 confirmButtonText: '确定'
                             })
@@ -160,28 +160,62 @@
                 if (row!=undefined){
                     this.selectedTid=row.tid;
                 }
-                var mListAll=this.commonVar.axiosServe+'/findAllToPage';
-                var mListByc=this.commonVar.axiosServe+'/findByConditions';
+                var mListAll=this.commonVar.axiosServe+'/findAllToPage1';
+                var mListByc=this.commonVar.axiosServe+'/findByConditions1';
                 this.condition.pageOffset = this.currentPage - 1;
-                this.$axios.post((this.condition.name == '' ? mListAll : mListByc),this.$qs.stringify(this.condition))
-                    .then(res => {
-                        console.log(res.data.list)
-                        if (res.data.code == '200') {
-                            this.memberTable = res.data.list;
-                            //这个是uid，后台实体类是uId，因为不同，所以处理
-                            for (var i=0;i<res.data.list.length;i++){
-                                this.memberTable[i].uId=res.data.list[i].uid;
+                if (this.condition.name == ''){
+                    this.$axios.post(mListAll,this.$qs.stringify({
+                        "tid":this.selectedTid,
+                        "pageOffset":this.currentPage - 1
+                    }))
+                        .then(res => {
+                            console.log(res.data.list)
+                            if (res.data.code == '200') {
+                                this.memberTable = res.data.list;
+                                //这个是uid，后台实体类是uId，因为不同，所以处理
+                                for (var i=0;i<res.data.list.length;i++){
+                                    this.memberTable[i].uId=res.data.list[i].uid;
+                                }
+                                console.log(this.memberTable);
+                                this.totalNum = res.data.totalNum;
+                                this.dialogFormVisible=true;
+                            } else {
+                                this.$alert(res.data.msg, "提示", {
+                                    confirmButtonText: '确定'
+                                })
                             }
-                            console.log(this.memberTable);
-                            this.totalNum = res.data.totalNum;
-                            this.dialogFormVisible=true;
-                        } else {
-                            this.$alert(res.data.msg, "提示", {
-                                confirmButtonText: '确定'
-                            })
-                        }
 
-                    })
+                        })
+                }else{
+                    let reqData={
+                        "tid":this.selectedTid,
+                        "condition":this.condition
+                    }
+                    this.$axios.post(mListByc,this.$qs.stringify({
+                        "tid":this.selectedTid,
+                        "pageOffset":this.currentPage - 1,
+                        "name":this.condition.name
+                    }))
+                        .then(res => {
+                            console.log(res.data.list)
+                            if (res.data.code == '200') {
+                                this.memberTable = res.data.list;
+                                //这个是uid，后台实体类是uId，因为不同，所以处理
+                                for (var i=0;i<res.data.list.length;i++){
+                                    this.memberTable[i].uId=res.data.list[i].uid;
+                                }
+                                console.log(this.memberTable);
+                                this.totalNum = res.data.totalNum;
+                                this.dialogFormVisible=true;
+                            } else {
+                                this.$alert(res.data.msg, "提示", {
+                                    confirmButtonText: '确定'
+                                })
+                            }
+
+                        })
+                }
+
             },
             current_change(currentPage) {  //改变当前页
                 this.currentPage = currentPage;
