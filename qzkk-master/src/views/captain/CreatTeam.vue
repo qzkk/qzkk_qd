@@ -22,8 +22,8 @@
         data() {
             return {
                 creatTeam: {
-                   // name: '一队',
-                   //  uId:this.$store.state.UID
+                     name: '一队',
+                     uId:this.$store.state.UID
                 },
                 rules: {
                     name: [
@@ -53,7 +53,7 @@
                             })
                         }
                         if (res.data.code == "200") {
-                            this.$alert('创建小队成功', '提示', {
+                            this.$alert('申请小队成功', '提示', {
                                 confirmButtonText: '确定',
                                 callback: () => {
                                     location.reload();
