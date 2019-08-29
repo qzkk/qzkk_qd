@@ -22,8 +22,8 @@
         data() {
             return {
                 creatTeam: {
-                   name: '一队',
-                    uId:this.$store.state.UID
+                   // name: '一队',
+                   //  uId:this.$store.state.UID
                 },
                 rules: {
                     name: [
