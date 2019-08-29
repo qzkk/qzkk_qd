@@ -58,11 +58,15 @@
         methods: {
             // 小队信息 需要插入对话框
             teamList:function(){
-                this.$axios.get(this.commonVar.axiosServe+'/getTeamList')
-                    .then(res =>{
-                        this.tableData = res.data.goods;
 
+                let postData = {
+                    state: 1
+                };
+                this.$axios.post(this.commonVar.axiosServe+'/getTeamLists',this.$qs.stringify(postData))
+                    .then(res =>{
+                        this.tableData = res.data.data;
                     })
+
             },
 
             // 小队人员信息
