@@ -147,7 +147,7 @@
             },
             stateFromat(row) {
                 if (row.state == "0") {
-                    return "审核中";
+                    return "待审核";
                 } else if (row.state == "1") {
                     return "审核通过";
                 }else{

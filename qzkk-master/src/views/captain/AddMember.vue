@@ -144,7 +144,7 @@
         },
         methods: {
             select() {
-                this.$axios.post(this.commonVar.axiosServe + '/getTeamList', this.$qs.stringify({'uid':this.$store.state.UID}))
+                this.$axios.post(this.commonVar.axiosServe + '/teamListOfAccessByUid', this.$qs.stringify({'uid':this.$store.state.UID}))
                     .then(res => {
                         if (res.data.code == '500') {
                             this.$alert(res.data.msg, '提示', {
