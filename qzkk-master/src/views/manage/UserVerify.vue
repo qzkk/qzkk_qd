@@ -7,18 +7,15 @@
                     border
                     style="width: 100%">
                 <el-table-column
-                        type="index"
-                        width="100">
+                        type="index">
                 </el-table-column>
                 <el-table-column
                         property="account"
-                        label="账号名"
-                        width="220">
+                        label="账号名">
                 </el-table-column>
                 <el-table-column
                         property="name"
-                        label="用户姓名"
-                        width="220">
+                        label="用户姓名">
                 </el-table-column>
                 <el-table-column
                         property="sex"
@@ -39,6 +36,7 @@
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
+                                type="success"
                                 @click="examinePass(scope.row, scope.$index)">通过</el-button>
                         <el-button
                                 size="mini"
