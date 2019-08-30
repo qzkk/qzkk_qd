@@ -11,17 +11,17 @@
                     width="100">
             </el-table-column>
             <el-table-column
-                    prop="tId"
+                    prop="tid"
                     label="小队编号"
                     width="150">
             </el-table-column>
             <el-table-column
-                    prop="tName"
+                    prop="tname"
                     label="小队名称"
                     width="300">
             </el-table-column>
             <el-table-column
-                    prop="tTask"
+                    prop="taName"
                     label="小队任务"
                     width="500">
             </el-table-column>
@@ -51,6 +51,18 @@
     import headTop from '../../components/headTop'
     export default{
 
+        data(){
+            return{
+
+                tableData: [{
+                    tid:'2561',
+                    tname:'非机动',
+                    taName:'是否按',
+                }],
+                dialogTableVisible: false,
+            }
+        },
+
         created(){
             this.teamList()
         },
@@ -70,20 +82,20 @@
             },
 
             // 小队人员信息
-            teamUserList(index,row) {
-                this.$axios.post(this.commonVar.axiosServe + '/teamUserList', this.$qs.stringify(row.gId))
-                    .then(res => {
-                        this.tableData = res.data.goods;
-                    })
-            },
+            // teamUserList(index,row) {
+            //     this.$axios.post(this.commonVar.axiosServe + '/teamUserList', this.$qs.stringify(row.gId))
+            //         .then(res => {
+            //             this.tableData = res.data.goods;
+            //         })
+            // },
 
             // 小队物资信息
-            teamGoodList(index,row){
-                this.$axios.post(this.commonVar.axiosServe + '/teamGoodList', this.$qs.stringify(row.gId))
-                    .then(res => {
-                        this.tableData = res.data.goods;
-                    })
-            }
+            // teamGoodList(index,row){
+            //     this.$axios.post(this.commonVar.axiosServe + '/teamGoodList', this.$qs.stringify(row.gId))
+            //         .then(res => {
+            //             this.tableData = res.data.goods;
+            //         })
+            // }
         },
 
         components: {
