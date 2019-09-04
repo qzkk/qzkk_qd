@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c3e532ec-abe2-420f-81f8-ffee277bfda1" name="Default Changelist" comment="添加登记系统的跳转目录">
+    <list default="true" id="c3e532ec-abe2-420f-81f8-ffee277bfda1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/style/mixin.less" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/style/mixin.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodVerify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/Notice.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/Notice.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/NoticeVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/NoticeVerify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserVerify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/examineTaskByManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/examineTaskByManage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/teammember/Member.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/teammember/Member.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +113,7 @@
       <workItem from="1567418184326" duration="2542000" />
       <workItem from="1567424760046" duration="16000" />
       <workItem from="1567425091223" duration="12700000" />
-      <workItem from="1567564032231" duration="1024000" />
+      <workItem from="1567564032231" duration="1603000" />
     </task>
     <task id="LOCAL-00001" summary="添加登记系统的跳转目录">
       <created>1564712766456</created>
@@ -152,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567146642575</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="8.30部署版本">
+      <created>1567565827297</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567565827297</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +188,8 @@
     <MESSAGE value="添加队员查看小队信息的功能" />
     <MESSAGE value="添加登记系统的跳转目录" />
     <MESSAGE value="8.30 部属版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="8.30 部属版本" />
+    <MESSAGE value="8.30部署版本" />
+    <option name="LAST_COMMIT_MESSAGE" value="8.30部署版本" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
