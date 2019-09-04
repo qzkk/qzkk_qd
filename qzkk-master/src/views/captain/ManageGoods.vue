@@ -180,7 +180,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post(this.commonVar.axiosServe + '/returnGoods', this.$qs.stringify({'gaid':row.gaId,'gid':row.gId,'number':row.number}))
+                    this.$axios.post(this.commonVar.axiosServe + '/returnGoods', this.$qs.stringify({'gaid':row.gaId,'gid':row.gid,'number':row.number}))
                         .then(res => {
                             if (res.data.code == '500') {
                                 this.$alert(res.data.msg, '提示', {
