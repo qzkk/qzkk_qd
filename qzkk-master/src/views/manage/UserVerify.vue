@@ -32,7 +32,9 @@
                         :formatter = "typeFormat">
                 </el-table-column>
 
-                <el-table-column label="操作">
+                <el-table-column label="操作"
+                                 fixed="right"
+                                 width="250">
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
