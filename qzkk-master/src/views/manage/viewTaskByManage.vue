@@ -228,7 +228,7 @@
             exportTask(){
                 var taskList=this.tableData
                 taskList=JSON.stringify(taskList);
-                taskList=taskList.replace(/\[/g,"%5B");
+                taskList=taskList.replace(/\[/g,"%5B");//需转译
                 taskList=taskList.replace(/]/g,"%5D");
                 taskList=taskList.replace(/{/g,"%7B");
                 taskList=taskList.replace(/}/g,"%7D");

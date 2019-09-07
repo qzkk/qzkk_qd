@@ -116,8 +116,6 @@
 
         methods: {
             getgoods:function(){
-                console.log('res')
-
                 this.$axios.get(this.commonVar.axiosServe+'/getGoodList')
                     .then(res =>{
                         this.tableData = res.data.goods;
