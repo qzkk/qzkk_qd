@@ -70,17 +70,12 @@
                         label="申请人">
                 </el-table-column>
                 <el-table-column
-                        prop="route"
-                        label="路线">
-                </el-table-column>
-
-                <el-table-column
                         prop="state"
                         label="审核状态"
                         :formatter="stateFromat">
                 </el-table-column>
                 <el-table-column
-                        label="负责团队">
+                        label="负责队伍">
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
@@ -125,22 +120,22 @@
                     <el-table-column
                             fixed
                             prop="tname"
-                            label="团队名称">
+                            label="小队">
                     </el-table-column>
                     <el-table-column
                             prop="uname"
-                            label="团队负责人">
+                            label="小队负责人">
                     </el-table-column>
                     <el-table-column
                             prop="tid"
-                            label="团队id" v-if="false">
+                            label="小队id" v-if="false">
                     </el-table-column>
                     <el-table-column
                             prop="uid"
-                            label="负责人id" v-if="false">
+                            label="队长id" v-if="false">
                     </el-table-column>
                     <el-table-column
-                            label="团队成员">
+                            label="队伍成员">
                         <template slot-scope="scope">
                             <el-button  size="mini"
                                         type="primary"
@@ -243,10 +238,9 @@
             },
             select1() {
                 this.selectTaskCondition.pageOffset = this.currentPage - 1;
-                console.log(this.selectTaskCondition)
                 this.$axios.post(this.commonVar.axiosServe + '/getTaskListToPage', this.$qs.stringify(this.selectTaskCondition))
                     .then(res => {
-                        // console.log(res.data.list)
+                        console.log(res.data.list)
                         if (res.data.code == '200') {
                             this.tableData = res.data.list;
                             this.totalNum = res.data.totalNum;

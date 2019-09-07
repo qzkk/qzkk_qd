@@ -3,8 +3,8 @@
         <head-top></head-top>
         <div class="table_container">
             <el-form :model="creatTeam" :rules="rules" ref="creatTeam" label-width="10%">
-            <el-form-item label ="小队名称" prop="name">
-                <el-input  v-model="creatTeam.name" placeholder="小队名称">
+            <el-form-item label ="团队名称" prop="name">
+                <el-input  v-model="creatTeam.name" placeholder="团队名称">
                 </el-input>
             </el-form-item>
             <el-form-item>
@@ -53,7 +53,7 @@
                             })
                         }
                         if (res.data.code == "200") {
-                            this.$alert('申请小队成功', '提示', {
+                            this.$alert('申请团队成功', '提示', {
                                 confirmButtonText: '确定',
                                 callback: () => {
                                     location.reload();

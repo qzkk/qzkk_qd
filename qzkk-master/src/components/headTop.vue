@@ -2,14 +2,14 @@
     <el-row class="header_container">
         <el-col :span="12" >
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/manage'}">首页</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/xxx'}">首页</el-breadcrumb-item>
                 <el-breadcrumb-item v-for="(item, index) in $route.meta" :key="index">{{item}}</el-breadcrumb-item>
             </el-breadcrumb>
         </el-col>
         <el-col :span="8" >
         </el-col>
         <el-col :span="2" v-model="info">
-            <span>欢迎您！{{info.type}}{{info.account}}</span>
+            <span>{{info.type}}{{info.account}}</span>
         </el-col>
         <el-col :span="2" >
 
@@ -55,6 +55,10 @@
                 this.info.type = "队长";
             } else if (this.$store.state.ACCOUNT_TYPE == '2') {
                 this.info.type = "管理员";
+            } else if (this.$store.state.ACCOUNT_TYPE == '3'){
+                this.info.type = "科考基地";
+            } else if (this.$store.state.ACCOUNT_TYPE == '4'){
+                this.info.type = "成果转化中心";
             }
         },
 
@@ -69,6 +73,10 @@
                             index='/captain'
                         }else if(this.info.type=="队员"){
                             index='/member'
+                        }else if (this.info.type=="科考基地"){
+                            index='/base'
+                        }else if (this.info.type=="成果转化中心"){
+                            index='/core'
                         }else{
                             index='/'
                         }

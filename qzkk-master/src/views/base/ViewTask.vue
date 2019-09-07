@@ -70,9 +70,9 @@
                         label="申请人">
                 </el-table-column>
                 <el-table-column
-                        prop="route"
-                        label="路线">
-                </el-table-column>
+                    prop="route"
+                    label="路线">
+            </el-table-column>
 
                 <el-table-column
                         prop="state"
