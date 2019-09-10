@@ -74,9 +74,9 @@
                         }else if(this.info.type=="队员"){
                             index='/member'
                         }else if (this.info.type=="科考基地"){
-                            index='/base'
+                            index='/manage'
                         }else if (this.info.type=="成果转化中心"){
-                            index='/core'
+                            index='/manage'
                         }else{
                             index='/'
                         }

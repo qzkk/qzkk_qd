@@ -56,6 +56,8 @@
                     </el-form-item>
                     <el-form-item label="注册级别" prop="type">
                         <el-select v-model="registerForm.type" placeholder="身份" style="width: 100%">
+                            <el-option label="成果转换中心" value="4"></el-option>
+                            <el-option label="科考基地" value="3"></el-option>
                             <el-option label="系统管理员" value="2"></el-option>
                             <el-option label="科考队队长" value="1"></el-option>
                             <el-option label="科考队队员" value="0"></el-option>

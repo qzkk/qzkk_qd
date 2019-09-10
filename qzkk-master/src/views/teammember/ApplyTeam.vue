@@ -179,12 +179,16 @@
                 }
             },
             typeFormat(row) {
-                if(row.type == '0') {
+                if (row.type == '0') {
                     return "队员";
-                } else if(row.type == '1') {
-                    return "队长";
-                } else if(row.type == '2') {
+                } else if (row.type == '1') {
+                    return "负责人";
+                } else if (row.type == '2') {
                     return "管理员";
+                }else if (row.type == '3') {
+                    return "科考基地";
+                }else if (row.type == '4') {
+                    return "成果转化中心";
                 }
             },
         },

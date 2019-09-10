@@ -79,9 +79,9 @@
                             this.$router.push('/manage');
                         }
                         if (this.$store.state.ACCOUNT_TYPE ==3  && res.data.code == 200) {
-                            this.$router.push('/base');
+                            this.$router.push('/manage');
                         }if (this.$store.state.ACCOUNT_TYPE == 4 && res.data.code == 200) {
-                            this.$router.push('/core');
+                            this.$router.push('/manage');
                         }
                         if (res.data.code == "401") {
                             this.$alert('密码错误', '提示', {
