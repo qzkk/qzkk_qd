@@ -92,20 +92,30 @@
             <template slot-scope="scope">
                 <!--<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
                 <span>设置为：</span>
-                <el-button
-                        size="mini"
-                        type="danger"
-                        @click="limitSZ(2)">管理员
-                </el-button>
+<!--                <el-button-->
+<!--                        size="mini"-->
+<!--                        type="danger"-->
+<!--                        @click="limitSZ(2)">管理员-->
+<!--                </el-button>-->
                 <el-button
                         size="mini"
                         type="warning"
-                        @click="limitSZ(1)">队长
+                        @click="limitSZ(3)">科考基地
+                </el-button>
+                <el-button
+                        size="mini"
+                        type="success"
+                        @click="limitSZ(4)">成果转化中心
+                </el-button>
+                <el-button
+                        size="mini"
+                        type="primary"
+                        @click="limitSZ(1)">团队负责人
                 </el-button>
 
                 <el-button
                         size="mini"
-                        type="success"
+                        type="info"
                         @click="limitSZ(0)">队员
                 </el-button>
             </template>
@@ -148,9 +158,13 @@
                 if (row.type == '0') {
                     return "队员";
                 } else if (row.type == '1') {
-                    return "队长";
+                    return "负责人";
                 } else if (row.type == '2') {
                     return "管理员";
+                }else if (row.type == '3') {
+                    return "科考基地";
+                }else if (row.type == '4') {
+                    return "成果转化中心";
                 }
             },
             sexFromat(row) {

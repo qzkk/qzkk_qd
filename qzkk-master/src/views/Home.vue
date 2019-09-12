@@ -1,7 +1,7 @@
 <template>
     <div>
         <head-top></head-top>
-        <section class="data_section" v-if="this.$store.state.ACCOUNT_TYPE == '2'">
+        <section class="data_section" v-if="this.$store.state.ACCOUNT_TYPE >= '2'">
             <header class="section_title">功能列表</header>
             <el-row :gutter="20" style="margin-bottom: 10px;">
                 <el-col :span="4"><div class="data_list all_head"><span class="data_num head">人员管理</span></div></el-col>

@@ -52,7 +52,7 @@
             if (this.$store.state.ACCOUNT_TYPE == '0') {
                 this.info.type = "队员";
             } else if (this.$store.state.ACCOUNT_TYPE == '1') {
-                this.info.type = "队长";
+                this.info.type = "负责人";
             } else if (this.$store.state.ACCOUNT_TYPE == '2') {
                 this.info.type = "管理员";
             } else if (this.$store.state.ACCOUNT_TYPE == '3'){
@@ -69,14 +69,14 @@
                         var index='';
                         if (this.info.type=="管理员"){
                             index='/manage'
-                        }else if (this.info.type=="队长"){
+                        }else if (this.info.type=="负责人"){
                             index='/captain'
                         }else if(this.info.type=="队员"){
                             index='/member'
                         }else if (this.info.type=="科考基地"){
-                            index='/base'
+                            index='/manage'
                         }else if (this.info.type=="成果转化中心"){
-                            index='/core'
+                            index='/manage'
                         }else{
                             index='/'
                         }

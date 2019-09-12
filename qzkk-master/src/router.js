@@ -67,6 +67,10 @@ const router = new Router({
         component: () => import('./views/manage/GoodVerify.vue'),
         meta: ['物资管理', '物资审核'],
       },{
+        path: '/returnCheck',
+        component: () => import('./views/manage/ReturnCheck.vue'),
+        meta: ['物资管理', '归还审核'],
+      },{
         path: '/teamList',
         component: () => import('./views/manage/TeamList.vue'),
         meta: ['小队管理', '查看小队'],
@@ -221,75 +225,75 @@ const router = new Router({
       ]
     },
 
-    {
-      name: 'Base',
-      path: '/base',
-      component: () => import('./views/base/Base.vue'),
-      children: [{
-        name: 'home',
-        path: '',
-        component: () => import('./views/Home.vue'),
-        meta: [],
-      },{
-          path: '/Base',
-          component: () => import('./views/base/Base.vue'),
-          meta: ['信息服务','通知']
-        }, {
-        path: '/viewTaskByBase',
-        component: () => import('./views/base/ViewTask.vue'),
-        meta: ['任务管理','查看任务']
-      },{
-        path: '/teamListByBase',
-        component: () => import('./views/base/TeamList.vue'),
-        meta: ['团队管理','查看团队']
-      },{
-        path: '/goodListByBase',
-        component: () => import('./views/base/GoodList.vue'),
-        meta: ['物资管理','查看物资']
-      },{
-        path: '/AddGoodsByBase',
-        component: () => import('./views/base/AddGoods.vue'),
-        meta: ['物资管理','物资录入']
-      },{
-        path: '/GoodVerifyByBase',
-        component: () => import('./views/base/GoodVerify.vue'),
-        meta: ['物资管理','物资审核']
-      },{
-          path: '/UserListByBase',
-          component: () => import('./views/base/UserList.vue'),
-          meta: ['人员管理','查看人员']
-        }
-      ]
-    },
-
-    {
-      name: 'Core',
-      path: '/core',
-      component: () => import('./views/core/Core.vue'),
-      children: [{
-        name: 'home',
-        path: '',
-        component: () => import('./views/Home.vue'),
-        meta: [],
-      }, {
-          path: '/Base',
-          component: () => import('./views/teammember/Message.vue'),
-          meta: ['信息服务','通知']
-        },{
-        path: '/viewTaskByCore',
-        component: () => import('./views/core/ViewTask.vue'),
-        meta: ['任务管理','查看任务']
-      },{
-        path: '/examineTaskByCore',
-        component: () => import('./views/core/examineTaskByCore.vue'),
-        meta: ['任务管理','审核任务']
-      },{
-        path: '/TeamListByCore',
-        component: () => import('./views/core/TeamList.vue'),
-        meta: ['团队管理','查看团队']
-      },
-      ]
-    }
+    // {
+    //   name: 'Base',
+    //   path: '/base',
+    //   component: () => import('./views/base/Base.vue'),
+    //   children: [{
+    //     name: 'home',
+    //     path: '',
+    //     component: () => import('./views/Home.vue'),
+    //     meta: [],
+    //   },{
+    //       path: '/Base',
+    //       component: () => import('./views/base/Base.vue'),
+    //       meta: ['信息服务','通知']
+    //     }, {
+    //     path: '/viewTaskByBase',
+    //     component: () => import('./views/base/ViewTask.vue'),
+    //     meta: ['任务管理','查看任务']
+    //   },{
+    //     path: '/teamListByBase',
+    //     component: () => import('./views/base/TeamList.vue'),
+    //     meta: ['团队管理','查看团队']
+    //   },{
+    //     path: '/goodListByBase',
+    //     component: () => import('./views/base/GoodList.vue'),
+    //     meta: ['物资管理','查看物资']
+    //   },{
+    //     path: '/AddGoodsByBase',
+    //     component: () => import('./views/base/AddGoods.vue'),
+    //     meta: ['物资管理','物资录入']
+    //   },{
+    //     path: '/GoodVerifyByBase',
+    //     component: () => import('./views/base/GoodVerify.vue'),
+    //     meta: ['物资管理','物资审核']
+    //   },{
+    //       path: '/UserListByBase',
+    //       component: () => import('./views/base/UserList.vue'),
+    //       meta: ['人员管理','查看人员']
+    //     }
+    //   ]
+    // },
+    //
+    // {
+    //   name: 'Core',
+    //   path: '/core',
+    //   component: () => import('./views/core/Core.vue'),
+    //   children: [{
+    //     name: 'home',
+    //     path: '',
+    //     component: () => import('./views/Home.vue'),
+    //     meta: [],
+    //   }, {
+    //       path: '/Base',
+    //       component: () => import('./views/teammember/Message.vue'),
+    //       meta: ['信息服务','通知']
+    //     },{
+    //     path: '/viewTaskByCore',
+    //     component: () => import('./views/core/ViewTask.vue'),
+    //     meta: ['任务管理','查看任务']
+    //   },{
+    //     path: '/examineTaskByCore',
+    //     component: () => import('./views/core/examineTaskByCore.vue'),
+    //     meta: ['任务管理','审核任务']
+    //   },{
+    //     path: '/TeamListByCore',
+    //     component: () => import('./views/core/TeamList.vue'),
+    //     meta: ['团队管理','查看团队']
+    //   },
+    //   ]
+    // }
 
 
   ]

@@ -16,6 +16,11 @@
                         width="220">
                 </el-table-column>
                 <el-table-column v-if="false"
+                                 property="tid"
+                                 label="团队id"
+                                 width="220">
+                </el-table-column>
+                <el-table-column v-if="false"
                                  property="gid"
                                  label="物资id"
                                  width="220">
@@ -60,7 +65,15 @@
                                 size="mini"
                                 type="success"
                                 @click="returnGoods(scope.$index, scope.row)">归还物资</el-button>
-                        <el-button  v-if="scope.row.state==-1"
+                        <el-button v-if="scope.row.state==2"
+                                   size="mini"
+                                   type="primary"
+                                   @click="abandonReturn(scope.$index, scope.row)">取消归还</el-button>
+                        <el-button v-if="scope.row.state==3"
+                                   size="mini"
+                                   type="warning"
+                                   @click="returnGoods(scope.$index, scope.row)">重新归还</el-button>
+                        <el-button  v-if="scope.row.state==-1||scope.row.state==4"
                                    size="mini"
                                    type="danger"
                                    @click="deleteApply(scope.$index, scope.row)">删除</el-button>
@@ -95,8 +108,14 @@
                     return "审核中";
                 } else if (row.state == "1") {
                     return "审核通过";
-                }else{
-                    return "审核被拒绝";
+                }else if (row.state == "-1") {
+                    return "审核不通过";
+                }else if (row.state == "2") {
+                    return "正在归还";
+                }else if (row.state == "3") {
+                    return "归还不通过";
+                }else if (row.state == "4") {
+                    return "归还成功";
                 }
             },
             select() {
@@ -121,6 +140,37 @@
                 }).then(() => {
                     console.log(row)
                     this.$axios.post(this.commonVar.axiosServe + '/abandonApply', this.$qs.stringify({'gaid':row.gaId,'gid':row.gid,'number':row.number}))
+                        .then(res => {
+                            if (res.data.code == '500') {
+                                this.$alert(res.data.msg, '提示', {
+                                    confirmButtonText: '确定'
+                                })
+                            }
+                            if (res.data.code == '200') {
+                                this.$alert(res.data.msg, '提示', {
+                                    confirmButtonText: '确定',
+                                    callback: () => {
+                                        this.select()
+                                    }
+                                })
+                            }
+                        })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消该操作'
+                    });
+                });
+
+            },
+            abandonReturn(index, row) {
+                this.$confirm('是否执行该操作', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    console.log(row)
+                    this.$axios.post(this.commonVar.axiosServe + '/abandonReturn', this.$qs.stringify({'gaid':row.gaId}))
                         .then(res => {
                             if (res.data.code == '500') {
                                 this.$alert(res.data.msg, '提示', {
@@ -180,7 +230,9 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post(this.commonVar.axiosServe + '/returnGoods', this.$qs.stringify({'gaid':row.gaId,'gid':row.gid,'number':row.number}))
+                    this.$axios.post(this.commonVar.axiosServe + '/returnGoods', this.$qs.stringify({'goodsId':row.gid,
+                        'goodsName':row.name, 'identifier':row.identifier,'retrunNumber':row.number,
+                        'teamId':row.tid,'teamName':row.tname,'gaId':row.gaId}))
                         .then(res => {
                             if (res.data.code == '500') {
                                 this.$alert(res.data.msg, '提示', {

@@ -145,9 +145,13 @@
                 if (row.type == '0') {
                     return "队员";
                 } else if (row.type == '1') {
-                    return "队长";
+                    return "负责人";
                 } else if (row.type == '2') {
                     return "管理员";
+                }else if (row.type == '3') {
+                    return "科考基地";
+                }else if (row.type == '4') {
+                    return "成果转化中心";
                 }
             },
             sexFromat(row) {
@@ -203,7 +207,6 @@
                 var findall = this.commonVar.axiosServe + '/findAllToPage';
                 var findByConditions = this.commonVar.axiosServe + '/findByConditions';
                 this.condition.pageOffset = this.currentPage - 1;
-                console.log(this.condition);
 
                 this.$axios.post((this.condition.workUnit == '' && this.condition.name == '' && this.condition.subjectName == '' ? findall : findByConditions), this.$qs.stringify(this.condition))
                     .then(res => {
@@ -214,9 +217,11 @@
                         }
                         if (res.data.code == '200') {
                             this.tableData = res.data.list;
+                            console.log(this.tableData);
                             this.totalNum = res.data.totalNum;
                         }
                     })
+
             },
         },
 
