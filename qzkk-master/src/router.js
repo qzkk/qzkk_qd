@@ -67,6 +67,10 @@ const router = new Router({
         component: () => import('./views/manage/GoodVerify.vue'),
         meta: ['物资管理', '物资审核'],
       },{
+        path: '/returnCheck',
+        component: () => import('./views/manage/ReturnCheck.vue'),
+        meta: ['物资管理', '归还审核'],
+      },{
         path: '/teamList',
         component: () => import('./views/manage/TeamList.vue'),
         meta: ['小队管理', '查看小队'],

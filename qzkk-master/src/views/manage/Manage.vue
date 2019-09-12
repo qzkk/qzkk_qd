@@ -25,7 +25,7 @@
                     <el-submenu index="3">
                         <template slot="title"><i class="el-icon-setting"></i>物资管理</template>
                         <el-menu-item index="goodList">查看物资</el-menu-item>
-                        <el-menu-item index="goodReturn" v-if="this.$store.state.ACCOUNT_TYPE == 2||this.$store.state.ACCOUNT_TYPE == 3">物资归还</el-menu-item>
+                        <el-menu-item index="returnCheck" v-if="this.$store.state.ACCOUNT_TYPE == 2||this.$store.state.ACCOUNT_TYPE == 3">归还审核</el-menu-item>
                         <el-menu-item index="addGoods" v-if="this.$store.state.ACCOUNT_TYPE == 2||this.$store.state.ACCOUNT_TYPE == 3">物资录入</el-menu-item>
                         <el-menu-item index="goodVerify" v-if="this.$store.state.ACCOUNT_TYPE == 2||this.$store.state.ACCOUNT_TYPE == 3">物资审批</el-menu-item>
                     </el-submenu>
