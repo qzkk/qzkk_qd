@@ -55,9 +55,14 @@ const router = new Router({
         component: SerchPerRegister,
         meta: ['登记系统', '查看人员登记'],
       },{
+        path: '/goodMessage',
+        component: () => import('./views/manage/GoodMessage.vue'),
+        meta: ['物资管理', '查看物资'],
+      }
+      ,{
         path: '/goodList',
         component: () => import('./views/manage/GoodList.vue'),
-        meta: ['物资管理', '查看物资'],
+        meta: ['物资管理', '删除物资'],
       },{
         path: '/addgoods',
         component: () => import('./views/manage/AddGoods.vue'),

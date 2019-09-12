@@ -12,17 +12,17 @@
             </el-table-column>
             <el-table-column
                     prop="tid"
-                    label="小队编号"
+                    label="团队编号"
                     width="150">
             </el-table-column>
             <el-table-column
                     prop="tname"
-                    label="小队名称"
+                    label="团队名称"
                     width="300">
             </el-table-column>
             <el-table-column
                     prop="taName"
-                    label="小队任务"
+                    label="团队任务"
                     width="500">
             </el-table-column>
             <el-table-column
@@ -47,7 +47,7 @@
 
 <!--        <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
 
-        <el-dialog title="小队所属人员" :visible.sync="dialogTableVisible">
+        <el-dialog title="团队所属人员" :visible.sync="dialogTableVisible">
             <el-table :data="userData">
                 <el-table-column property="uid" label="队员编号" width="150"></el-table-column>
                 <el-table-column property="name" label="姓名" width="200"></el-table-column>
