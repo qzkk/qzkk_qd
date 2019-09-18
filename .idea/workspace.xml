@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3e532ec-abe2-420f-81f8-ffee277bfda1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodMessage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/test.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/common.var.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/common.var.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/style/common.less" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/style/common.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/style/mixin.less" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/style/mixin.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/teammember/TeamList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/teammember/TeamList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/vue.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +32,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/qzkk-master/src/views/manage" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -47,14 +46,16 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStorm\qzkk2.0\qzkk-master\src\views\manage" />
+      <recent name="D:\WebStorm\qzkk2.0\qzkk-master\src\views\base" />
+      <recent name="$PROJECT_DIR$/qzkk-master/src/views/manage" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\WebStorm\Extra\qzkk-master\src\views\manage" />
       <recent name="D:\WebStorm\Extra\qzkk-master\src\views\base" />
       <recent name="D:\WebStorm\Extra\qzkk-master\src\views\core" />
       <recent name="D:\WebStorm\Extra\qzkk-master\src\views\teammember" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/qzkk-master/src/views/manage" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -125,7 +126,9 @@
       <workItem from="1567418184326" duration="2542000" />
       <workItem from="1567424760046" duration="16000" />
       <workItem from="1567425091223" duration="12700000" />
-      <workItem from="1567564032231" duration="50594000" />
+      <workItem from="1567564032231" duration="50850000" />
+      <workItem from="1568439358870" duration="6241000" />
+      <workItem from="1568697293828" duration="16366000" />
     </task>
     <task id="LOCAL-00001" summary="添加登记系统的跳转目录">
       <created>1564712766456</created>
@@ -176,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567825605103</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改查看物资：增加使用详情">
+      <created>1568291128020</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1568291128020</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +226,8 @@
     <MESSAGE value="8.30 部属版本" />
     <MESSAGE value="8.30部署版本" />
     <MESSAGE value="增加科考基地 成果转化中心 角色" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加科考基地 成果转化中心 角色" />
+    <MESSAGE value="修改查看物资：增加使用详情" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改查看物资：增加使用详情" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -228,20 +239,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/qzkk-master/src/router.js</url>
-          <line>218</line>
-          <properties lambdaOrdinal="-1" />
+          <line>222</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/qzkk-master/src/router.js</url>
-          <line>202</line>
-          <properties lambdaOrdinal="-1" />
+          <line>206</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/qzkk-master/src/views/core/ViewTask.vue</url>
           <line>10</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
