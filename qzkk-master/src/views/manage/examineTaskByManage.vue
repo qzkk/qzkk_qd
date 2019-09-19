@@ -2,6 +2,12 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+        <el-row  >
+
+
+            <el-col style ="padding: 30px;background-color: white">
+
+
             <el-table
                     :data="tableData"
                     border
@@ -64,7 +70,11 @@
                     </template>
                 </el-table-column>
             </el-table>
-        </div>
+
+            </el-col>
+
+        </el-row>
+
         <el-dialog title="小队信息" :visible.sync="dialogFormVisible" width="50%">
             <!--            <div class="container ">-->
             <!--                <span>查询条件</span>-->
@@ -145,6 +155,7 @@
                 </el-table>
             </div>
         </el-dialog>
+        </div>
     </div>
 </template>
 
@@ -273,6 +284,8 @@
     @import '../../style/mixin';
 
     .table_container {
-        padding: 20px;
+        padding: 30px;
+        /*border: red;*/
+        background-color: #EFF3F4;
     }
 </style>

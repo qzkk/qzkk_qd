@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3e532ec-abe2-420f-81f8-ffee277bfda1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/test.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/style/common.less" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/style/common.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qzkk-master/src/style/mixin.less" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/style/mixin.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/components/headTop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/components/headTop.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodMessage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodMessage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/GoodVerify.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/LimitsManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/LimitsManage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/Manage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/ReturnCheck.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/ReturnCheck.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/TeamList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/TeamList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/UserVerify.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/examineTaskByManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/examineTaskByManage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qzkk-master/src/views/manage/viewTaskByManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/qzkk-master/src/views/manage/viewTaskByManage.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +136,7 @@
       <workItem from="1567425091223" duration="12700000" />
       <workItem from="1567564032231" duration="50850000" />
       <workItem from="1568439358870" duration="6241000" />
-      <workItem from="1568697293828" duration="16366000" />
+      <workItem from="1568697293828" duration="37257000" />
     </task>
     <task id="LOCAL-00001" summary="添加登记系统的跳转目录">
       <created>1564712766456</created>
@@ -186,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568291128020</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="管理员界面修改">
+      <created>1568783694325</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1568783694325</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +242,8 @@
     <MESSAGE value="8.30部署版本" />
     <MESSAGE value="增加科考基地 成果转化中心 角色" />
     <MESSAGE value="修改查看物资：增加使用详情" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改查看物资：增加使用详情" />
+    <MESSAGE value="管理员界面修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="管理员界面修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -239,18 +255,54 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/qzkk-master/src/router.js</url>
-          <line>222</line>
+          <line>218</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/qzkk-master/src/router.js</url>
-          <line>206</line>
+          <line>202</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/qzkk-master/src/views/core/ViewTask.vue</url>
           <line>10</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/qzkk-master/src/views/manage/GoodMessage.vue</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/qzkk-master/src/views/manage/ReturnCheck.vue</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue</url>
+          <line>83</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue</url>
+          <line>16</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/qzkk-master/src/views/manage/AddGoods.vue</url>
+          <line>3</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/qzkk-master/src/views/manage/UserList.vue</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

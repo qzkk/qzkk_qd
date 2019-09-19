@@ -2,9 +2,14 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+
+<el-row>
+
+    <el-col style ="padding: 30px;background-color: white">
             <el-table
                     :data="tableData"
-
+                    border="border"
+                    stripe
                     style="width: 100%">
                 <el-table-column
                         type="index"
@@ -54,7 +59,19 @@
                     </template>
                 </el-table-column>
             </el-table>
+    <div class="Pagination" style="text-align: left;margin-top: 10px;">
+        <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-size="20"
+                layout="total, prev, pager, next"
+                :total="count">
+        </el-pagination>
+    </div>
+</el-col>
 
+</el-row>
 
             <el-dialog title="使用详情" :visible.sync="dialogTableVisible">
                 <el-table :data="gridData">
@@ -68,20 +85,7 @@
                 </el-table>
             </el-dialog>
 
-
-
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="20"
-                        layout="total, prev, pager, next"
-                        :total="count">
-                </el-pagination>
-            </div>
         </div>
-
     </div>
 </template>
 
@@ -105,6 +109,13 @@
                     leftNumber: 0
 
                 }],
+                condition: {
+                    name: '',
+                    workUnit: '',
+                    subjectName: '',
+                    pageOffset: 1,
+                    pageSize: 10
+                },
                 gridData: [{
                     gName: '长安奔奔',
                     tName: '长江一号队',
@@ -190,7 +201,10 @@
 <style lang="less" scoped>
     @import '../../style/mixin';
     .table_container{
-        padding: 20px;
+        padding: 30px;
+        /*border: red;*/
+        background-color: #EFF3F4;
+
     }
 
 </style>

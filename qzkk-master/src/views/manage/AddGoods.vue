@@ -2,12 +2,19 @@
     <div>
         <head-top></head-top>
         <div class="table_container">
-            <el-button
-                    size="small"
-                    type="primary"
-                    @click="handleInitApplication">录入物资</el-button>
-        </div>
-        <div align=center class="demo-input-size">
+
+            <el-row>
+
+                <el-col style ="padding: 30px;background-color: white">
+                        <div class="container " style="margin-bottom: 20px;margin-left: 30px">
+                            <el-button
+                                size="small"
+                                type="primary"
+                                @click="handleInitApplication">录入物资</el-button>
+                        </div>
+                    <el-col style="height: 1px;background-color: #EFF3F4"></el-col>
+
+                        <div align=center class="demo-input-size">
             <!--新物资提交-->
             <div class="table_container">
                 <el-table
@@ -70,8 +77,11 @@
 <!--            对话框-->
 
         </div>
+                    </el-col>
 
-        <el-dialog title="物资申请" :visible.sync="dialogFormVisible" width="35%">
+            </el-row>
+        </div>
+                <el-dialog title="物资申请" :visible.sync="dialogFormVisible" width="35%">
             <el-form :model="newgoods" :rules="rules" ref="regForm"  label-width="150px">
                 <el-row :gutter="20">
                     <el-col :span="18">

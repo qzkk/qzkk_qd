@@ -1,7 +1,7 @@
 <template>
     <div class="manage_page fillcontain" style ="overflow: auto">
         <el-row   style="height: 100%;" >
-            <el-col :span="4"  style="min-height: 100% ;background-color: #1D2B36;width: 8%">
+            <el-col :span="4"  style="min-height: 100% ;background-color: #1D2B36;width: 11%">
                 <el-menu :default-active="defaultActive"
                          style="min-height: 100%;"
                          background-color="#1D2B36"
@@ -41,7 +41,9 @@
 
                 </el-menu>
             </el-col>
-            <el-col :span="20"  style="height: 100%;width: 92%;">
+
+
+            <el-col :span="20"  style="height: 100%;width: 88%;background-color: #EFF3F4">
                 <keep-alive>
                     <router-view></router-view>
                 </keep-alive>

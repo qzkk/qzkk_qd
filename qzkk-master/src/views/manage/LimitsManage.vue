@@ -3,16 +3,21 @@
         <head-top></head-top>
 
         <div class="table_container">
-            <div class="container " style="margin-bottom: 20px">
-                <el-row :gutter="20" >
+
+            <el-row>
+                <el-col style ="padding: 30px;background-color: white">
+                    <div class="container " style="margin-bottom: 20px">
+                        <el-row :gutter="20" >
                     <el-col :span="2" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif"><span>查询条件:</span></el-col>
                     <el-col :span="4"><el-input v-model="condition.name" placeholder="请输入人员的姓名" :sapn="4"></el-input></el-col>
                     <el-col :span="4"><el-input v-model="condition.subjectName" placeholder="请输入人员的科考主题" autosize></el-input></el-col>
                     <el-col :span="4"><el-input v-model="condition.workUnit" placeholder="请输入人员的工作单位" autosize></el-input></el-col>
                     <el-col :span="4"><el-button type="primary" plain @click="select">查询</el-button></el-col>
                 </el-row>
-            </div>
-            <el-table
+                    </div>
+                    <el-col style="height: 1px;background-color: #EFF3F4"></el-col>
+                    <el-col style ="padding: 30px;background-color: white">
+                    <el-table
                     :data="tableData"
                     border
                     style="width: 100%">
@@ -78,15 +83,20 @@
                     </template>
                 </el-table-column>
             </el-table>
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination
-                        :page-size="10"
-                        layout="prev, pager, next"
-                        @current-change="current_change"
-                        :current-page.sync="currentPage"
-                        :total="totalNum">
-                </el-pagination>
-            </div>
+                        <div class="Pagination" style="text-align: left;margin-top: 10px;">
+                            <el-pagination
+                                    :page-size="10"
+                                    layout="prev, pager, next"
+                                    @current-change="current_change"
+                                    :current-page.sync="currentPage"
+                                    :total="totalNum">
+                            </el-pagination>
+                        </div>
+                    </el-col>
+
+                </el-col>
+
+            </el-row>
         </div>
         <el-dialog title="权限设置" :visible.sync="dialogFormVisible" width="30%">
             <template slot-scope="scope">

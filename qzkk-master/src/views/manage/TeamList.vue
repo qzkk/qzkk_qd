@@ -1,6 +1,11 @@
 ><template>
     <div class="fillcontain">
         <head-top></head-top>
+        <div class="table_container">
+        <el-row  >
+
+
+            <el-col style ="padding: 30px;background-color: white">
 
         <el-table
                 :data="tableData"
@@ -45,7 +50,12 @@
 
         </el-table>
 
-<!--        <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
+        </el-col>
+
+        </el-row>
+
+
+        <!--        <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
 
         <el-dialog title="小队所属人员" :visible.sync="dialogTableVisible">
             <el-table :data="userData">
@@ -56,6 +66,7 @@
             </el-table>
         </el-dialog>
 
+        </div>
 
     </div>
 </template>
@@ -130,11 +141,12 @@
     @import '../../style/mixin';
 
     .table_container {
-        padding: 20px;
+        padding: 30px;
+        background-color: #EFF3F4;
     }
 
-    .el-h4 {
-        line-height: 40px;
-    }
+    /*.el-h4 {*/
+    /*    line-height: 40px;*/
+    /*}*/
 
 </style>

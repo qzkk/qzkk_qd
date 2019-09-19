@@ -2,6 +2,10 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+
+            <el-row>
+
+                <el-col style ="padding: 30px;background-color: white">
             <el-table
                     :data="tableData"
                     border
@@ -10,11 +14,7 @@
                         type="index"
                         width="100">
                 </el-table-column>
-<!--                <el-table-column-->
-<!--                        property="gaId"-->
-<!--                        label="申请编号"-->
-<!--                        width="100">-->
-<!--                </el-table-column>-->
+
                 <el-table-column
                         property="gid"
                         label="物资编号">
@@ -69,6 +69,10 @@
                         :total="count">
                 </el-pagination>
             </div>
+                </el-col>
+
+            </el-row>
+
         </div>
     </div>
 </template>
@@ -151,6 +155,9 @@
 <style lang="less" scoped>
     @import '../../style/mixin';
     .table_container{
-        padding: 20px;
+        padding: 30px;
+        /*border: red;*/
+        background-color: #EFF3F4;
+
     }
 </style>

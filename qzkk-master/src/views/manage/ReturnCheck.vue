@@ -2,6 +2,10 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+
+            <el-row>
+
+                <el-col style ="padding: 30px;background-color: white">
             <el-table
                     :data="tableData"
                     border
@@ -53,6 +57,9 @@
                     </template>
                 </el-table-column>
             </el-table>
+                </el-col>
+
+            </el-row>
         </div>
     </div>
 </template>
@@ -156,6 +163,9 @@
 <style lang="less" scoped>
     @import '../../style/mixin';
     .table_container{
-        padding: 20px;
+        padding: 30px;
+        /*border: red;*/
+        background-color: #EFF3F4;
+
     }
 </style>

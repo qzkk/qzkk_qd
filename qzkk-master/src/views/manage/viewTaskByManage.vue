@@ -1,46 +1,46 @@
 <template>
     <div class="fillcontain">
         <head-top></head-top>
+
         <div class="table_container">
-            <div class="container " style="margin-bottom: 20px">
-                <el-row :gutter="16" >
-                    <el-col :span="2" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif"><span>查询条件:</span></el-col>
-                    <el-col :span="4"><el-input v-model="selectTaskCondition.tname" placeholder="请输入任务名称" :sapn="4"></el-input></el-col>
-                    <el-col :span="4"><el-input v-model="selectTaskCondition.uname" placeholder="请输入申请人" autosize></el-input></el-col>
-                    <el-col :span="4">
-                        <el-select v-model="selectTaskCondition.state" placeholder="审核状态" style="width: 100%">
-                            <el-option label="所有状态" value="2"></el-option>
-                            <el-option label="待审核" value="0"></el-option>
-                            <el-option label="审核通过" value="1"></el-option>
-                            <el-option label="审核被拒绝" value="-1"></el-option>
-                        </el-select>
-                    </el-col>
-                    <el-col :span="4"><el-button type="primary" plain @click="select1">查询</el-button></el-col>
-<!--                    <el-col :span="10">-->
-<!--                        <span>审核状态:</span>-->
-<!--                        <template>-->
-<!--                            <el-checkbox-group v-model="checkList" @change="stateChange()">-->
-<!--                                <el-checkbox label="待审核"></el-checkbox>-->
-<!--                                <el-checkbox label="审核通过"></el-checkbox>-->
-<!--                                <el-checkbox label="审核被拒绝"></el-checkbox>-->
-<!--                            </el-checkbox-group>-->
-<!--                        </template>-->
-<!--                    </el-col>-->
-                </el-row>
-            </div>
-            <el-table
+
+            <el-row>
+                <el-col style ="padding: 30px;background-color: white">
+                    <div class="container " style="margin-bottom: 20px">
+                            <el-row :gutter="16" >
+                                <el-col :span="2" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif"><span>查询条件:</span></el-col>
+                                <el-col :span="4"><el-input v-model="selectTaskCondition.tname" placeholder="请输入任务名称" :sapn="4"></el-input></el-col>
+                                <el-col :span="4"><el-input v-model="selectTaskCondition.uname" placeholder="请输入申请人" autosize></el-input></el-col>
+                                <el-col :span="4">
+                                    <el-select v-model="selectTaskCondition.state" placeholder="审核状态" style="width: 100%">
+                                    <el-option label="所有状态" value="2"></el-option>
+                                    <el-option label="待审核" value="0"></el-option>
+                                    <el-option label="审核通过" value="1"></el-option>
+                                    <el-option label="审核被拒绝" value="-1"></el-option>
+                                    </el-select>
+                                </el-col>
+                                <el-col :span="4"><el-button type="primary" plain @click="select1">查询</el-button></el-col>
+                            </el-row>
+                    </div>
+                </el-col>
+                <el-col style="height: 1px;background-color: #EFF3F4"></el-col>
+                <el-col style ="padding: 30px;background-color: white">
+                    <el-table
                     :data="tableData"
                     border
+                    stripe
                     style="width: 100%">
                 <el-table-column
                         type="index"
-                        width="100">
+                        width="100"
+                >
                 </el-table-column>
                 <el-table-column v-if="false"
                                  property="id"
                                  label="任务id"
                                  width="220">
                 </el-table-column>
+
                 <el-table-column
                         property="sn"
                         label="任务名称">
@@ -50,30 +50,40 @@
                         label="科考区域">
                 </el-table-column>
                 <el-table-column
-                        property="st"
-                        label="任务内容">
-                </el-table-column>
-                <el-table-column
-                        property="demand"
-                        label="服务保障需求">
-                </el-table-column>
-                <el-table-column
-                        property="sd"
-                        label="开始时间">
-                </el-table-column>
-                <el-table-column
-                        prop="ed"
-                        label="结束时间">
-                </el-table-column>
-                <el-table-column
-                        prop="name"
-                        label="申请人">
-                </el-table-column>
-                <el-table-column
                         prop="state"
                         label="审核状态"
                         :formatter="stateFromat">
                 </el-table-column>
+
+                <el-table-column type="expand">
+                    <template slot-scope="props">
+                        <el-form label-position="left" inline class="demo-table-expand" label-width="120px">
+                            <el-form-item   label="任务名称" >
+                                <span>{{ props.row.sn }}</span>
+                            </el-form-item>
+                            <el-form-item   label="科考区域">
+                                <span>{{ props.row.rs }}</span>
+                            </el-form-item>
+                            <el-form-item   label="任务内容">
+                                <span>{{ props.row.st }}</span>
+                            </el-form-item>
+                            <el-form-item   label="服务保障需求">
+                                <span>{{ props.row.demand }}</span>
+                            </el-form-item>
+                            <el-form-item   label="开始时间">
+                                <span>{{ props.row.sd }}</span>
+                            </el-form-item>
+                            <el-form-item   label="结束时间">
+                                <span>{{ props.row.ed}}</span>
+                            </el-form-item>
+                            <el-form-item   label="申请人">
+                                <span>{{ props.row.name }}</span>
+                            </el-form-item>
+
+                        </el-form>
+                    </template>
+                </el-table-column>
+
                 <el-table-column
                         label="负责队伍">
                     <template slot-scope="scope">
@@ -84,34 +94,37 @@
                     </template>
                 </el-table-column>
             </el-table>
-            <div style="margin-top: 20px">
-                <el-row :gutter="20" >
-                    <el-col :span="21">
                         <div class="Pagination" style="text-align: left;margin-top: 10px;">
                             <el-pagination
-                                    :page-size="10"
-                                    layout="prev, pager, next"
-                                    @current-change="current_change"
-                                    :current-page.sync="currentPage"
-                                    :total="totalNum">
+                                :page-size="10"
+                                layout="prev, pager, next"
+                                @current-change="current_change"
+                                :current-page.sync="currentPage"
+                                :total="totalNum">
                             </el-pagination>
                         </div>
-                    </el-col>
-                    <el-col :span="3">
-                        <el-button  size="mini"
+                        <div style="margin-top: 20px">
+                            <el-row :gutter="20" >
+                                <el-col :span="3">
+                                    <el-button  size="mini"
                                     type="success"
                                     @click="exportTask()">导出Excel</el-button>
-                    </el-col>
+                                </el-col>
 
-                </el-row>
-            </div>
+                            </el-row>
+                        </div>
+                </el-col>
+
+            </el-row>
+
+
         </div>
+
+
+
+
         <el-dialog title="小队信息" :visible.sync="dialogFormVisible" width="50%">
-            <!--            <div class="container ">-->
-            <!--                <span>查询条件</span>-->
-            <!--                <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>-->
-            <!--                <el-button type="primary" plain @click="addMemberList">查询</el-button>-->
-            <!--            </div>-->
+
             <div class="table_container">
                 <el-table
                         :data="teamList"
@@ -147,11 +160,7 @@
             </div>
         </el-dialog>
         <el-dialog title="成员信息" :visible.sync="dialogFormVisible1" width="50%">
-            <!--            <div class="container ">-->
-            <!--                <span>查询条件</span>-->
-            <!--                <el-input v-model="condition.name" placeholder="请输入登记人员的姓名" autosize></el-input>-->
-            <!--                <el-button type="primary" plain @click="addMemberList">查询</el-button>-->
-            <!--            </div>-->
+
             <div class="table_container">
                 <el-table
                         :data="userList"
@@ -325,6 +334,24 @@
 
 <style lang="less" scoped>
     @import '../../style/mixin';
+    .demo-table-expand {
+        font-size: 0;
+
+    }
+    .demo-table-expand label{
+        width: 90px;
+        color: #99a9bf;
+    }
+    .el-form-item{
+        margin-right: 0;
+        margin-bottom: 0;
+        width: 60%;
+    }
+    /*.demo-table-expand .el-form-item {*/
+    /*    margin-right: 0;*/
+    /*    margin-bottom: 0;*/
+    /*    width: 50%;*/
+    /*}*/
 
     .table_container {
         padding: 20px;
@@ -333,5 +360,7 @@
     .el-h4 {
         line-height: 40px;
     }
+
+
 
 </style>

@@ -1,8 +1,10 @@
 <template>
     <div class="fillcontain">
         <head-top></head-top>
-
         <div class="table_container">
+
+            <el-row>
+                <el-col style ="padding: 30px;background-color: white">
             <div class="container " style="margin-bottom: 20px">
                 <el-row :gutter="20" >
                     <el-col :span="2" style="line-height: 40px; font-family: 'Microsoft Yahei', sans-serif"><span>查询条件:</span></el-col>
@@ -12,7 +14,10 @@
                     <el-col :span="5"><el-button type="primary" plain @click="select">查询</el-button></el-col>
                 </el-row>
             </div>
-            <el-table
+                </el-col>
+                <el-col style="height: 1px;background-color: #EFF3F4"></el-col>
+                <el-col style ="padding: 30px;background-color: white">
+                    <el-table
                     :data="tableData"
                     border
                     style="width: 100%">
@@ -81,7 +86,8 @@
                         </el-button>
                     </template>
                 </el-table-column>
-            </el-table>
+                    </el-table>
+                </el-col>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
                         :page-size="10"
@@ -91,6 +97,8 @@
                         :total="totalNum">
                 </el-pagination>
             </div>
+            </el-row>
+
         </div>
         <el-dialog title="人员信息" :visible.sync="dialogFormVisible" width="30%">
             <el-form :model="form" :disabled="true">

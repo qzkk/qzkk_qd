@@ -2,9 +2,14 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+
+            <el-row>
+
+                <el-col style ="padding: 30px;background-color: white">
             <el-table
                     :data="tableData"
-
+                    border="border"
+                    stripe
                     style="width: 100%">
                 <el-table-column
                         type="index"
@@ -64,6 +69,10 @@
                         :total="count">
                 </el-pagination>
             </div>
+                </el-col>
+
+            </el-row>
+
         </div>
 
     </div>
