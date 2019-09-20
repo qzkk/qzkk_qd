@@ -40,7 +40,7 @@
 <!--                        <el-menu-item index="ViewGoods">查看物资</el-menu-item>-->
 <!--                        <el-menu-item index="ReturnGoods">归还物资</el-menu-item>-->
                         <el-menu-item index="ManageGoods">管理物资</el-menu-item>
-                        <el-menu-item index="AplyGoods">申请物资</el-menu-item>
+<!--                        <el-menu-item index="AplyGoods">申请物资</el-menu-item>-->
                         <!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
                     </el-submenu>
 

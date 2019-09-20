@@ -77,7 +77,7 @@
                 <el-table :data="gridData">
                     <el-table-column property="gname" label="物资名称" ></el-table-column>
                     <el-table-column property="tname" label="申请团队"></el-table-column>
-                    <el-table-column property="state" label="状态"></el-table-column>
+                    <el-table-column property="state" label="状态" :formatter="stateFromat"></el-table-column>
                     <el-table-column property="number" label="使用/申请数量"></el-table-column>
                     <el-table-column property="description" label="需求描述"></el-table-column>
                     <el-table-column property="application_time" label="申请时间"></el-table-column>
@@ -193,7 +193,22 @@
                    .then(res =>{
                        this.gridData = res.data.list;
                    })
-            }
+            },
+            stateFromat(row) {
+                if (row.state == "0") {
+                    return "待审核";
+                } else if (row.state == "1") {
+                    return "审核通过";
+                }else if (row.state == "-1") {
+                    return "审核不通过";
+                }else if (row.state == "2") {
+                    return "正在归还";
+                }else if (row.state == "3") {
+                    return "归还不通过";
+                }else{
+                    return "归还成功";
+                }
+            },
         },
     }
 </script>
